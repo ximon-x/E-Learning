@@ -1,10 +1,6 @@
-def find_best_hour() -> int:
-    return 0
+import numpy as np
 
 
-def find_worst_hour() -> int:
-    return 0
-
-
-def find_worst_topic() -> int:
+def determine_progress(scores: list) -> int:
+    n_array = np.array(scores)
     return 0
