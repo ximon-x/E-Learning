@@ -1,24 +1,23 @@
-class SplashScreen extends StatelessWidget {
-  SplashScreen({Key? key}) : super(key: key);
+import 'package:client/utils/constants.dart';
+import 'package:flutter/material.dart';
+
+class SplashScreen extends StatefulWidget {
+  const SplashScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  get xSplashContainerSize => null;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Stack(children: [
-          Positioned(
-              top: 80,
-              left: xDefaultSize,
-              child: Column(children: [
-                Text(
-                  xAppName,
-                  style: Theme.of(context).textTheme.displaySmall,
-                ),
-                Text(
-                  xAppTagLine,
-                  style: Theme.of(context).textTheme.headlineSmall,
-                )
-              ])),
+          const Positioned(
+              top: 80, left: 30, child: Image(image: AssetImage(xAppBanner))),
           const Positioned(
               bottom: 100,
               child: Image(
@@ -26,13 +25,13 @@ class SplashScreen extends StatelessWidget {
               )),
           Positioned(
               bottom: 40,
-              right: xDefaultSize,
+              right: 30,
               child: Container(
-                width: xSplashContainerSize,
-                height: xSplashContainerSize,
+                width: 80,
+                height: 80,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(100),
-                  color: xPrimaryColor,
+                  color: Theme.of(context).primaryColor,
                 ),
               ))
         ]),
