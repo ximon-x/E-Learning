@@ -17,12 +17,15 @@ dependencies:
   google_fonts: ^6.1.0
   lottie: ^2.6.0
   syncfusion_flutter_charts: ^23.1.39
+  http: ^1.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.0
+
+  flutter_launcher_icons: "^0.13.1"
 
 flutter:
   uses-material-design: true
@@ -31,6 +34,7 @@ flutter:
     - assets/images/
     - assets/icons/
     - assets/videos/
+    - assets/mocks/
 
   # fonts:
   #   - assets/fonts/
@@ -41,12 +45,8 @@ flutter_native_splash:
   image: "assets/icons/splash.png"
   image_dark: "assets/icons/splash.png"
 
-  android_12:
-    color: "#42a5f5"
-    image_dark: assets/icons/splash.png
-    color_dark: "#042a49"
-
-    icon_background_color_dark: "#eeeeee"
-    icon_background_color: "#111111"
-
-    branding: assets/icons/icon.png
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icons/icon.png"
+  min_sdk_android: 21 # android min sdk min:16, default 21

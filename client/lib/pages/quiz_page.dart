@@ -1,44 +1,67 @@
+import 'package:client/utils/classes.dart';
 import 'package:flutter/material.dart';
 
 class QuizPage extends StatefulWidget {
-  const QuizPage({super.key});
+  const QuizPage({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _QuizPageState();
+  State<QuizPage> createState() => _QuizPageState();
 }
 
 class _QuizPageState extends State<QuizPage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Quiz"),
-        backgroundColor: Colors.blue,
-      ),
-      body: Container(
-        margin: const EdgeInsets.all(10.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            MaterialButton(
-                height: 50.0,
-                color: Colors.green,
-                onPressed: startQuiz,
-                child: const Text(
-                  "Start Quiz",
-                  style: TextStyle(fontSize: 18.0, color: Colors.white),
-                ))
-          ],
-        ),
-      ),
-    );
+  List<Question> questions = [];
+  int selectedOptionIndex = -1;
+
+  Widget quizModal() {
+    switch (selectedOptionIndex) {
+      case 0:
+        return const Text('Math!');
+      case 1:
+        return const Text('English!');
+      case 2:
+        return const Text('General!');
+      default:
+        return const Text('History!');
+    }
   }
 
-  void startQuiz() {
-    setState(() {
-      // Navigator.push(
-      //     context, new MaterialPageRoute(builder: (context) => new Quiz()));
-    });
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                ElevatedButton(
+                  onPressed: () => setState(() {
+                    selectedOptionIndex = 0;
+                  }),
+                  child: const Text('Math'),
+                ),
+                ElevatedButton(
+                  onPressed: () => setState(() {
+                    selectedOptionIndex = 1;
+                  }),
+                  child: const Text('English'),
+                ),
+                ElevatedButton(
+                  onPressed: () => setState(() {
+                    selectedOptionIndex = 2;
+                  }),
+                  child: const Text('General'),
+                ),
+                ElevatedButton(
+                  onPressed: () => setState(() {
+                    selectedOptionIndex = 3;
+                  }),
+                  child: const Text('History'),
+                )
+              ],
+            ),
+            questions.isEmpty ? Container() : quizModal(),
+          ],
+        ));
   }
 }
