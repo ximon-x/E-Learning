@@ -3,6 +3,7 @@ import 'package:client/pages/analytics_page.dart';
 import 'package:client/pages/dashboard.dart';
 import 'package:client/pages/quiz_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,27 +17,20 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   @override
-  initState() {
-    signedIn
-        // ignore: avoid_print
-        ? print("Signed in")
-        : Navigator.pushReplacementNamed(context, "/login");
-
-    super.initState();
-  }
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: const Text('i-learn'),
-          leading: const Icon(Icons.person),
+          // title: const Text('i-learn'),
+          leading: IconButton(
+              icon: const Icon(Icons.person),
+              onPressed: () {
+                EasyLoading.show(
+                    status: "loading...", maskType: EasyLoadingMaskType.black);
+
+                Future.delayed(const Duration(seconds: 3));
+                Navigator.pushReplacementNamed(context, "/profile");
+                EasyLoading.dismiss();
+              }),
           centerTitle: true,
           titleTextStyle: const TextStyle(fontWeight: FontWeight.bold)),
       body: _selectedIndex == 0
@@ -77,5 +71,21 @@ class _HomePageState extends State<HomePage> {
             )
           ]),
     );
+  }
+
+  @override
+  initState() {
+    signedIn
+        // ignore: avoid_print
+        ? print("Signed in")
+        : Navigator.pushReplacementNamed(context, "/login");
+
+    super.initState();
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 }

@@ -1,4 +1,5 @@
 const String xAppBanner = "assets/icons/banner.png";
+const String xAppLogo = "assets/icons/icon.png";
 
 const String xSplashTopIcon = "assets/images/ai_brain.png";
 const String xSplashImage = "assets/images/desk_man.png";

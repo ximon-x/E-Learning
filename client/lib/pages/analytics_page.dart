@@ -13,7 +13,8 @@ class AnalyticsPage extends StatelessWidget {
 
     Future.delayed(const Duration(seconds: 3))
         .then((value) => null)
-        .whenComplete(() => EasyLoading.showSuccess("Success!"));
+        .whenComplete(() =>
+            EasyLoading.showSuccess("Successful Analysis \n Go to Profile"));
   }
 
   @override
