@@ -5,7 +5,7 @@ import 'package:client/pages/profile_page.dart';
 import 'package:client/pages/quiz_page.dart';
 import 'package:client/themes/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
+// import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() {
   // WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();

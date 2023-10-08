@@ -1,3 +1,7 @@
+import 'package:client/pages/about_page.dart';
+import 'package:client/pages/analytics_page.dart';
+import 'package:client/pages/dashboard.dart';
+import 'package:client/pages/quiz_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,6 +13,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool signedIn = true;
+  int _selectedIndex = 0;
 
   @override
   initState() {
@@ -20,6 +25,12 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,30 +39,43 @@ class _HomePageState extends State<HomePage> {
           leading: const Icon(Icons.person),
           centerTitle: true,
           titleTextStyle: const TextStyle(fontWeight: FontWeight.bold)),
-      body: const Center(),
-      bottomNavigationBar: BottomNavigationBar(items: [
-        BottomNavigationBarItem(
-          icon: const Icon(Icons.dashboard),
-          label: "Dashboard",
-          backgroundColor: Theme.of(context).primaryColor,
-          tooltip: "Dashboard",
-        ),
-        BottomNavigationBarItem(
-          icon: const Icon(Icons.quiz),
-          label: "Take Quiz",
-          backgroundColor: Theme.of(context).primaryColor,
-        ),
-        BottomNavigationBarItem(
-          icon: const Icon(Icons.work_history),
-          label: "Review Progress",
-          backgroundColor: Theme.of(context).primaryColor,
-        ),
-        BottomNavigationBarItem(
-          icon: const Icon(Icons.info),
-          label: "About the Project",
-          backgroundColor: Theme.of(context).primaryColor,
-        )
-      ]),
+      body: _selectedIndex == 0
+          ? const Dashboard()
+          : _selectedIndex == 1
+              ? const QuizPage()
+              : _selectedIndex == 2
+                  ? const AnalyticsPage()
+                  : const AboutPage(),
+      bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          selectedFontSize: 14,
+          selectedIconTheme:
+              IconThemeData(color: Theme.of(context).primaryColorDark),
+          selectedItemColor: Theme.of(context).primaryColorDark,
+          currentIndex: _selectedIndex,
+          onTap: _onItemTapped,
+          items: [
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.dashboard),
+              label: "Dashboard",
+              backgroundColor: Theme.of(context).primaryColor,
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.quiz),
+              label: "Take Quiz",
+              backgroundColor: Theme.of(context).primaryColor,
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.upcoming),
+              label: "Review",
+              backgroundColor: Theme.of(context).primaryColor,
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(Icons.info),
+              label: "About",
+              backgroundColor: Theme.of(context).primaryColor,
+            )
+          ]),
     );
   }
 }
