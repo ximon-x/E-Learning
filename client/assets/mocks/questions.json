@@ -1,0 +1,413 @@
+{
+  "mathQuestions": [
+    {
+      "question": "What is the result of 5 + 3?",
+      "options": {
+        "A": 6,
+        "B": 7,
+        "C": 8,
+        "D": 9
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "If x = 10, what is the value of 2x?",
+      "options": {
+        "A": 18,
+        "B": 20,
+        "C": 22,
+        "D": 24
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "What is the square of 6?",
+      "options": {
+        "A": 30,
+        "B": 36,
+        "C": 42,
+        "D": 48
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "If y = 15, what is y divided by 3?",
+      "options": {
+        "A": 3,
+        "B": 5,
+        "C": 7,
+        "D": 10
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "What is 25% of 80?",
+      "options": {
+        "A": 15,
+        "B": 20,
+        "C": 25,
+        "D": 30
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Solve for x: 2x - 5 = 13.",
+      "options": {
+        "A": 7,
+        "B": 9,
+        "C": 11,
+        "D": 13
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "What is the result of 7 multiplied by 4?",
+      "options": {
+        "A": 24,
+        "B": 28,
+        "C": 30,
+        "D": 32
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "What is 3 squared?",
+      "options": {
+        "A": 6,
+        "B": 9,
+        "C": 12,
+        "D": 15
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "If a = 8 and b = 3, what is a + b?",
+      "options": {
+        "A": 10,
+        "B": 11,
+        "C": 12,
+        "D": 13
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "What is the result of 48 divided by 6?",
+      "options": {
+        "A": 6,
+        "B": 7,
+        "C": 8,
+        "D": 9
+      },
+      "correct_option": "C"
+    }
+  ],
+
+  "englishQuestions": [
+    {
+      "question": "Which of the following is a synonym for 'happy'?",
+      "options": {
+        "A": "Joyful",
+        "B": "Sad",
+        "C": "Angry",
+        "D": "Fearful"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "What is the opposite of 'arrive'?",
+      "options": {
+        "A": "Leave",
+        "B": "Stay",
+        "C": "Come",
+        "D": "Go"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Choose the correctly spelled word:",
+      "options": {
+        "A": "Occured",
+        "B": "Occured",
+        "C": "Occured",
+        "D": "Occurred"
+      },
+      "correct_option": "D"
+    },
+    {
+      "question": "Which word is a noun? 'Run', 'Running', 'Ran', or 'Runner'?",
+      "options": {
+        "A": "Run",
+        "B": "Running",
+        "C": "Ran",
+        "D": "Runner"
+      },
+      "correct_option": "D"
+    },
+    {
+      "question": "Identify the subject in the sentence: 'The dog chased the ball.'",
+      "options": {
+        "A": "Dog",
+        "B": "Chased",
+        "C": "Ball",
+        "D": "The"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "What is the plural form of 'child'?",
+      "options": {
+        "A": "Childs",
+        "B": "Childes",
+        "C": "Children",
+        "D": "Childen"
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "Which word means 'to make something larger in size or volume'?",
+      "options": {
+        "A": "Shrink",
+        "B": "Expand",
+        "C": "Reduce",
+        "D": "Decrease"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Choose the correct usage: 'Their' or 'There'",
+      "options": {
+        "A": "Their",
+        "B": "There",
+        "C": "Their's",
+        "D": "Theres"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "What part of speech is the word 'quickly'?",
+      "options": {
+        "A": "Adjective",
+        "B": "Noun",
+        "C": "Adverb",
+        "D": "Verb"
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "What is the past tense of 'sing'?",
+      "options": {
+        "A": "Sang",
+        "B": "Singed",
+        "C": "Sung",
+        "D": "Sing"
+      },
+      "correct_option": "A"
+    }
+  ],
+
+  "historyQuestions": [
+    {
+      "question": "Who was the first President of the United States?",
+      "options": {
+        "A": "Thomas Jefferson",
+        "B": "George Washington",
+        "C": "John Adams",
+        "D": "Abraham Lincoln"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "The French Revolution began in which year?",
+      "options": {
+        "A": "1776",
+        "B": "1789",
+        "C": "1801",
+        "D": "1820"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Which ancient civilization was located in present-day Mexico?",
+      "options": {
+        "A": "Maya",
+        "B": "Inca",
+        "C": "Aztec",
+        "D": "Egyptian"
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "The Declaration of Independence was adopted in which year?",
+      "options": {
+        "A": "1776",
+        "B": "1787",
+        "C": "1799",
+        "D": "1801"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Who was the leader of the Soviet Union during World War II?",
+      "options": {
+        "A": "Vladimir Lenin",
+        "B": "Joseph Stalin",
+        "C": "Mikhail Gorbachev",
+        "D": "Nikita Khrushchev"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "The Boston Tea Party occurred in which year?",
+      "options": {
+        "A": "1765",
+        "B": "1773",
+        "C": "1781",
+        "D": "1799"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "The Renaissance was a period of great cultural and intellectual growth in which continent?",
+      "options": {
+        "A": "Asia",
+        "B": "Europe",
+        "C": "Africa",
+        "D": "North America"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Who was the first woman to fly solo across the Atlantic Ocean?",
+      "options": {
+        "A": "Amelia Earhart",
+        "B": "Bessie Coleman",
+        "C": "Harriet Quimby",
+        "D": "Sally Ride"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "The Cold War was primarily between which two major powers?",
+      "options": {
+        "A": "United States and China",
+        "B": "United States and Soviet Union",
+        "C": "Soviet Union and China",
+        "D": "United States and Germany"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "The Great Wall of China was built during the reign of which dynasty?",
+      "options": {
+        "A": "Han Dynasty",
+        "B": "Ming Dynasty",
+        "C": "Qin Dynasty",
+        "D": "Song Dynasty"
+      },
+      "correct_option": "C"
+    }
+  ],
+
+  "generalQuestions": [
+    {
+      "question": "Which planet is known as the 'Red Planet'?",
+      "options": {
+        "A": "Venus",
+        "B": "Mars",
+        "C": "Jupiter",
+        "D": "Saturn"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Who wrote the play 'Romeo and Juliet'?",
+      "options": {
+        "A": "William Shakespeare",
+        "B": "Jane Austen",
+        "C": "Charles Dickens",
+        "D": "Mark Twain"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "What is the tallest mountain in the world?",
+      "options": {
+        "A": "K2",
+        "B": "Mount Everest",
+        "C": "Kangchenjunga",
+        "D": "Lhotse"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Which country is known as the 'Land of the Rising Sun'?",
+      "options": {
+        "A": "China",
+        "B": "Japan",
+        "C": "South Korea",
+        "D": "Vietnam"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Who painted the Mona Lisa?",
+      "options": {
+        "A": "Vincent van Gogh",
+        "B": "Pablo Picasso",
+        "C": "Leonardo da Vinci",
+        "D": "Michelangelo"
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "Which is the largest ocean on Earth?",
+      "options": {
+        "A": "Atlantic Ocean",
+        "B": "Indian Ocean",
+        "C": "Arctic Ocean",
+        "D": "Pacific Ocean"
+      },
+      "correct_option": "D"
+    },
+    {
+      "question": "What is the capital city of Australia?",
+      "options": {
+        "A": "Sydney",
+        "B": "Melbourne",
+        "C": "Canberra",
+        "D": "Brisbane"
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "Which famous scientist developed the theory of relativity?",
+      "options": {
+        "A": "Isaac Newton",
+        "B": "Albert Einstein",
+        "C": "Stephen Hawking",
+        "D": "Galileo Galilei"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "What is the world's largest continent?",
+      "options": {
+        "A": "Europe",
+        "B": "South America",
+        "C": "Asia",
+        "D": "Africa"
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "Who was the first person to step on the moon?",
+      "options": {
+        "A": "Buzz Aldrin",
+        "B": "Neil Armstrong",
+        "C": "Yuri Gagarin",
+        "D": "John Glenn"
+      },
+      "correct_option": "B"
+    }
+  ]
+}
