@@ -14,21 +14,6 @@ class _QuizPageState extends State<QuizPage> {
   List<Question> questions = [];
   int selectedOptionIndex = -1;
 
-  Widget quizModal() {
-    switch (selectedOptionIndex) {
-      case 0:
-        return const Text('Math!');
-      case 1:
-        return const Text('English!');
-      case 2:
-        return const Text('General!');
-      case 3:
-        return const Text('History!');
-    }
-
-    return const Text('No quiz selected');
-  }
-
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -43,7 +28,7 @@ class _QuizPageState extends State<QuizPage> {
                 Tab(text: "History"),
               ],
             ),
-            title: const Text('Tabs Demo'),
+            title: const Text('Self Quiz'),
           ),
           body: const TabBarView(
             children: [
