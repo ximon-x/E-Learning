@@ -19,6 +19,8 @@ dependencies:
   syncfusion_flutter_charts: ^23.1.39
   http: ^1.1.0
   flutter_easyloading: ^3.0.5
+  google_sign_in: ^6.1.5
+  firebase_auth: ^4.10.1
 
 dev_dependencies:
   flutter_test:

@@ -10,6 +10,7 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   late List<_ChartData> _chartData;
+  late List<_StackedColumnData> _stackedColumnData;
   late TooltipBehavior _tooltip;
 
   @override
@@ -20,6 +21,14 @@ class _ProfilePageState extends State<ProfilePage> {
       _ChartData('Aug', 34),
       _ChartData('Sep', 49),
       _ChartData('Oct', 67)
+    ];
+
+    _stackedColumnData = [
+      _StackedColumnData("Oct 4", 67, 64, 52, 32),
+      _StackedColumnData("Oct 5", 72, 74, 54, 40),
+      _StackedColumnData("Oct 6", 57, 34, 59, 32),
+      _StackedColumnData("Oct 7", 72, 44, 60, 75),
+      _StackedColumnData("Oct 8", 72, 54, 32, 91),
     ];
 
     _tooltip = TooltipBehavior(enable: true);
@@ -40,13 +49,47 @@ class _ProfilePageState extends State<ProfilePage> {
       ),
       body: Column(children: [
         const ListTile(
-          title: Text("Signed in as dummy@gmail.com"),
+          title: Text("Below are your stats"),
           leading: Icon(Icons.person_sharp, size: 50),
         ),
-        const ListTile(
-          title: Text("Below are your stats"),
-          leading: Icon(Icons.bar_chart, size: 50),
-        ),
+        Card(
+            elevation: 10,
+            shadowColor: Theme.of(context).primaryColor,
+            child: SfCartesianChart(
+                legend: const Legend(isVisible: true),
+                primaryXAxis: CategoryAxis(),
+                primaryYAxis:
+                    NumericAxis(minimum: 50, maximum: 400, interval: 50),
+                tooltipBehavior: _tooltip,
+                series: <ChartSeries>[
+                  StackedColumnSeries<_StackedColumnData, String>(
+                      dataSource: _stackedColumnData,
+                      xValueMapper: (_StackedColumnData score, _) => score.day,
+                      yValueMapper: (_StackedColumnData score, _) => score.math,
+                      name: 'Math',
+                      markerSettings: const MarkerSettings(isVisible: true)),
+                  StackedColumnSeries<_StackedColumnData, String>(
+                      dataSource: _stackedColumnData,
+                      xValueMapper: (_StackedColumnData score, _) => score.day,
+                      yValueMapper: (_StackedColumnData score, _) =>
+                          score.english,
+                      name: 'English',
+                      markerSettings: const MarkerSettings(isVisible: true)),
+                  StackedColumnSeries<_StackedColumnData, String>(
+                      dataSource: _stackedColumnData,
+                      xValueMapper: (_StackedColumnData score, _) => score.day,
+                      yValueMapper: (_StackedColumnData score, _) =>
+                          score.general,
+                      name: 'General',
+                      markerSettings: const MarkerSettings(isVisible: true)),
+                  StackedColumnSeries<_StackedColumnData, String>(
+                      dataSource: _stackedColumnData,
+                      xValueMapper: (_StackedColumnData score, _) => score.day,
+                      yValueMapper: (_StackedColumnData score, _) =>
+                          score.history,
+                      name: 'History',
+                      markerSettings: const MarkerSettings(isVisible: true)),
+                ])),
         Card(
           elevation: 10,
           shadowColor: Theme.of(context).primaryColor,
@@ -74,4 +117,16 @@ class _ChartData {
 
   final String x;
   final double y;
+}
+
+class _StackedColumnData {
+  _StackedColumnData(
+      this.day, this.math, this.english, this.history, this.general);
+
+  final String day;
+
+  final double math;
+  final double english;
+  final double history;
+  final double general;
 }

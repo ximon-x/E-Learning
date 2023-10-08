@@ -2,6 +2,8 @@ import 'package:client/pages/about_page.dart';
 import 'package:client/pages/analytics_page.dart';
 import 'package:client/pages/dashboard.dart';
 import 'package:client/pages/quiz_page.dart';
+import 'package:client/services/auth.service.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 
@@ -13,11 +15,37 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  bool signedIn = true;
+  final bool signedIn = true;
   int _selectedIndex = 0;
+  UserCredential? firebase;
 
-  @override
-  Widget build(BuildContext context) {
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
+  void handleSignin() {
+    AuthService()
+        .signinWithGoogle()
+        .then((value) => setState(() => firebase = value));
+
+    EasyLoading.show();
+    Future.delayed(const Duration(seconds: 3));
+    EasyLoading.dismiss();
+  }
+
+  Widget login() {
+    return Scaffold(
+      body: Center(
+          child: ElevatedButton(
+        onPressed: handleSignin,
+        child: const Text("Sign in with Google"),
+      )),
+    );
+  }
+
+  Widget home() {
     return Scaffold(
       appBar: AppBar(
           // title: const Text('i-learn'),
@@ -74,18 +102,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
-  initState() {
-    signedIn
-        // ignore: avoid_print
-        ? print("Signed in")
-        : Navigator.pushReplacementNamed(context, "/login");
+  Widget build(BuildContext context) {
+    if (firebase != null && firebase?.user != null) {
+      return home();
+    }
 
-    super.initState();
-  }
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+    return login();
   }
 }
