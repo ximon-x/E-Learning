@@ -16,7 +16,11 @@ class _AboutPageState extends State<AboutPage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(child: Text("About Page")),
-    );
+        body: Center(
+            child: Column(children: [
+      Text(
+          "This page was built by Mr Tosin as a submission for my MSc project"),
+      Text("The tech stack of this project was completed using Flutter."),
+    ])));
   }
 }
