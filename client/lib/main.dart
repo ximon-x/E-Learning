@@ -1,5 +1,7 @@
+import 'package:client/src/features/authentication/screens/splash_screen/splash_screen.dart';
 import 'package:client/src/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() {
   runApp(const App());
@@ -11,30 +13,11 @@ class App extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
         title: 'i-Learn',
         theme: XAppTheme.lightTheme,
         darkTheme: XAppTheme.darkTheme,
         themeMode: ThemeMode.system,
-        home: const AppHome());
-  }
-}
-
-class AppHome extends StatelessWidget {
-  const AppHome({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Flutter Demo Home Page'),
-      ),
-      body: const Center(
-        child: Text(
-          'Hello, world!',
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
-    );
+        home: SplashScreen());
   }
 }
