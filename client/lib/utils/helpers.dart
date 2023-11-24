@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:client/utils/classes.dart';
-import 'package:client/utils/enums.dart';
+import 'package:iLearn/utils/classes.dart';
+import 'package:iLearn/utils/enums.dart';
 import 'package:flutter/services.dart';
 
 Future<List<Question>> getQuestions(Subjects subject) async {

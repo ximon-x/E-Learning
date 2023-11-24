@@ -10,12 +10,12 @@ class AboutPage extends StatelessWidget {
             child: Card(
                 child: Column(children: [
       ListTile(
-        title: Text("Developed by Tosin"),
+        title: Text("Developed by Oluwatosin Olubudun"),
         leading: Icon(Icons.person_sharp, size: 50),
       ),
       ListTile(
-        title: Text("tosin@officialmail.com"),
-        leading: Icon(Icons.mail_sharp, size: 50),
+        title: Text("001273051"),
+        leading: Icon(Icons.numbers, size: 50),
       ),
       ListTile(
         title: Text("Built using Flutter and Flask"),

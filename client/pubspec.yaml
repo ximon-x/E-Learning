@@ -1,4 +1,4 @@
-name: client
+name: iLearn
 description: A new Flutter project.
 publish_to: "none"
 
@@ -21,6 +21,9 @@ dependencies:
   flutter_easyloading: ^3.0.5
   google_sign_in: ^6.1.5
   firebase_auth: ^4.10.1
+  firebase_ui_auth: ^1.10.0
+  firebase_ui_oauth_google: ^1.2.14
+  cloud_firestore: ^4.13.2
 
 dev_dependencies:
   flutter_test:

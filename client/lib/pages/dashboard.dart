@@ -27,7 +27,8 @@ class _DashboardState extends State<Dashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(children: [
+        body: SingleChildScrollView(
+            child: Column(children: [
       Container(
         padding: const EdgeInsets.all(20),
         child: const Text(
@@ -58,7 +59,7 @@ class _DashboardState extends State<Dashboard> {
                     dataLabelSettings:
                         const DataLabelSettings(isVisible: true)),
               ])),
-    ]));
+    ])));
   }
 }
 

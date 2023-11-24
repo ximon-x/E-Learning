@@ -1,8 +1,7 @@
-import 'package:client/pages/about_page.dart';
-import 'package:client/pages/analytics_page.dart';
-import 'package:client/pages/dashboard.dart';
-import 'package:client/pages/quiz_page.dart';
-import 'package:client/services/auth.service.dart';
+import 'package:iLearn/pages/about_page.dart';
+import 'package:iLearn/pages/analytics_page.dart';
+import 'package:iLearn/pages/dashboard.dart';
+import 'package:iLearn/pages/quiz_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -23,26 +22,6 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       _selectedIndex = index;
     });
-  }
-
-  void handleSignin() {
-    AuthService()
-        .signinWithGoogle()
-        .then((value) => setState(() => firebase = value));
-
-    EasyLoading.show();
-    Future.delayed(const Duration(seconds: 3));
-    EasyLoading.dismiss();
-  }
-
-  Widget login() {
-    return Scaffold(
-      body: Center(
-          child: ElevatedButton(
-        onPressed: handleSignin,
-        child: const Text("Sign in with Google"),
-      )),
-    );
   }
 
   Widget home() {
@@ -103,10 +82,10 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    if (firebase != null && firebase?.user != null) {
-      return home();
-    }
+    // if (firebase != null && firebase?.user != null) {
+    //   return home();
+    // }
 
-    return login();
+    return home();
   }
 }

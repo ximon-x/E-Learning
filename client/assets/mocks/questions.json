@@ -21,6 +21,406 @@
       "correct_option": "B"
     },
     {
+      "question": "What is the result of 10 - 4?",
+      "options": {
+        "A": 4,
+        "B": 6,
+        "C": 8,
+        "D": 10
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "If x = 3 and y = 7, what is the value of x + y?",
+      "options": {
+        "A": 8,
+        "B": 10,
+        "C": 12,
+        "D": 14
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "Multiply 6 by 5.",
+      "options": {
+        "A": 20,
+        "B": 25,
+        "C": 30,
+        "D": 35
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "Divide 18 by 3.",
+      "options": {
+        "A": 4,
+        "B": 6,
+        "C": 8,
+        "D": 10
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "What is the square of 9?",
+      "options": {
+        "A": 72,
+        "B": 81,
+        "C": 90,
+        "D": 99
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "If a = 4 and b = 2, what is the value of a * b?",
+      "options": {
+        "A": 6,
+        "B": 8,
+        "C": 10,
+        "D": 12
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Add 15 to 7.",
+      "options": {
+        "A": 18,
+        "B": 20,
+        "C": 22,
+        "D": 24
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "Subtract 9 from 14.",
+      "options": {
+        "A": 3,
+        "B": 5,
+        "C": 7,
+        "D": 9
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "If c = 6 and d = 3, what is the value of c / d?",
+      "options": {
+        "A": 1,
+        "B": 2,
+        "C": 3,
+        "D": 4
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "What is the result of 11 + 8?",
+      "options": {
+        "A": 17,
+        "B": 18,
+        "C": 19,
+        "D": 20
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "Multiply 5 by 6.",
+      "options": {
+        "A": 25,
+        "B": 30,
+        "C": 35,
+        "D": 40
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Divide 20 by 4.",
+      "options": {
+        "A": 3,
+        "B": 4,
+        "C": 5,
+        "D": 6
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "What is the square of 7?",
+      "options": {
+        "A": 42,
+        "B": 49,
+        "C": 56,
+        "D": 63
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "If e = 8 and f = 2, what is the value of e - f?",
+      "options": {
+        "A": 4,
+        "B": 6,
+        "C": 8,
+        "D": 10
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "Add 14 to 9.",
+      "options": {
+        "A": 21,
+        "B": 23,
+        "C": 25,
+        "D": 27
+      },
+      "correct_option": "D"
+    },
+    {
+      "question": "Subtract 6 from 12.",
+      "options": {
+        "A": 3,
+        "B": 5,
+        "C": 7,
+        "D": 9
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "If g = 15 and h = 3, what is the value of g / h?",
+      "options": {
+        "A": 3,
+        "B": 5,
+        "C": 7,
+        "D": 9
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "What is the result of 17 + 6?",
+      "options": {
+        "A": 21,
+        "B": 22,
+        "C": 23,
+        "D": 24
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "Multiply 8 by 4.",
+      "options": {
+        "A": 28,
+        "B": 32,
+        "C": 36,
+        "D": 40
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Divide 30 by 5.",
+      "options": {
+        "A": 4,
+        "B": 5,
+        "C": 6,
+        "D": 7
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "What is the result of 12 - 7?",
+      "options": {
+        "A": 3,
+        "B": 4,
+        "C": 5,
+        "D": 6
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "Solve the equation: 2 * (9 + 3) - 5",
+      "options": {
+        "A": 15,
+        "B": 19,
+        "C": 27,
+        "D": 33
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "If x = 6, what is the value of 2x + 3?",
+      "options": {
+        "A": 12,
+        "B": 15,
+        "C": 18,
+        "D": 21
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Calculate the square of 5.",
+      "options": {
+        "A": 20,
+        "B": 25,
+        "C": 30,
+        "D": 35
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "What is the result of 8 ÷ 2?",
+      "options": {
+        "A": 2,
+        "B": 3,
+        "C": 4,
+        "D": 5
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "Evaluate 4² + 3 × 2.",
+      "options": {
+        "A": 14,
+        "B": 16,
+        "C": 18,
+        "D": 20
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "If y = 10, what is the value of 2y - 7?",
+      "options": {
+        "A": 13,
+        "B": 15,
+        "C": 17,
+        "D": 19
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "Find the product of 6 and 9.",
+      "options": {
+        "A": 48,
+        "B": 54,
+        "C": 60,
+        "D": 66
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "What is the result of 15 + 4 × 2?",
+      "options": {
+        "A": 23,
+        "B": 27,
+        "C": 29,
+        "D": 33
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "If a = 7 and b = 3, what is the value of a² - b²?",
+      "options": {
+        "A": 36,
+        "B": 40,
+        "C": 44,
+        "D": 48
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "Simplify the expression: 3(2x - 5) + 4x",
+      "options": {
+        "A": "10x - 15",
+        "B": "10x - 5",
+        "C": "10x + 5",
+        "D": "10x + 15"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Calculate the area of a rectangle with length 8 units and width 5 units.",
+      "options": {
+        "A": 32,
+        "B": 35,
+        "C": 40,
+        "D": 45
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "If x + 3 = 10, what is the value of x?",
+      "options": {
+        "A": 5,
+        "B": 6,
+        "C": 7,
+        "D": 8
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Find the average of 12, 18, and 24.",
+      "options": {
+        "A": 16,
+        "B": 18,
+        "C": 20,
+        "D": 22
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "What is the result of 2³ + 5?",
+      "options": {
+        "A": 13,
+        "B": 14,
+        "C": 15,
+        "D": 16
+      },
+      "correct_option": "D"
+    },
+    {
+      "question": "If a circle has a radius of 6 units, what is its circumference? (Use π = 3.14)",
+      "options": {
+        "A": 18.84,
+        "B": 25.12,
+        "C": 37.68,
+        "D": 42.48
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "Solve the equation: 2x - 5 = 11",
+      "options": {
+        "A": 3,
+        "B": 4,
+        "C": 8,
+        "D": 9
+      },
+      "correct_option": "D"
+    },
+    {
+      "question": "Find the perimeter of a square with a side length of 9 units.",
+      "options": {
+        "A": 27,
+        "B": 36,
+        "C": 45,
+        "D": 54
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "If 2y = 16, what is the value of y?",
+      "options": {
+        "A": 4,
+        "B": 6,
+        "C": 8,
+        "D": 10
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "Calculate the volume of a cube with a side length of 3 units.",
+      "options": {
+        "A": 9,
+        "B": 18,
+        "C": 27,
+        "D": 36
+      },
+      "correct_option": "C"
+    },
+    {
       "question": "What is the square of 6?",
       "options": {
         "A": 30,
@@ -103,6 +503,406 @@
   ],
 
   "englishQuestions": [
+    {
+      "question": "Which of the following is a homophone for 'flour'?",
+      "options": {
+        "A": "Flower",
+        "B": "Floor",
+        "C": "Flow",
+        "D": "Flourish"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "What is the opposite of 'benevolent'?",
+      "options": {
+        "A": "Malevolent",
+        "B": "Kind",
+        "C": "Generous",
+        "D": "Altruistic"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Choose the correct use of 'its' and 'it's' in a sentence.",
+      "options": {
+        "A": "The cat licked it's paws.",
+        "B": "Its raining outside.",
+        "C": "The dog wagged its tail.",
+        "D": "It's important to bring its own lunch."
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "What is the plural form of 'deer'?",
+      "options": {
+        "A": "Deers",
+        "B": "Dears",
+        "C": "Deer",
+        "D": "Deeries"
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "Identify the correct conjunction in the sentence: 'She wanted to go to the party, but she had too much work.'",
+      "options": {
+        "A": "And",
+        "B": "Or",
+        "C": "But",
+        "D": "So"
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "What is the meaning of 'ephemeral'?",
+      "options": {
+        "A": "Lasting a very short time",
+        "B": "Permanently enduring",
+        "C": "Eternal",
+        "D": "Quick and efficient"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Choose the correctly punctuated sentence:",
+      "options": {
+        "A": "I saw her yesterday.",
+        "B": "I saw, her yesterday.",
+        "C": "I saw her, yesterday.",
+        "D": "I saw her yesterday"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "What is the synonym for 'zealous'?",
+      "options": {
+        "A": "Indifferent",
+        "B": "Eager",
+        "C": "Apathetic",
+        "D": "Lazy"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Identify the hyperbole in the sentence: 'I've told you a million times.'",
+      "options": {
+        "A": "I",
+        "B": "Told",
+        "C": "Million",
+        "D": "Times"
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "Choose the correct spelling: 'Conscious' or 'Conscience'?",
+      "options": {
+        "A": "Concious",
+        "B": "Conscius",
+        "C": "Conscious",
+        "D": "Conscience"
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "What is the antonym of 'opaque'?",
+      "options": {
+        "A": "Clear",
+        "B": "Dense",
+        "C": "Dark",
+        "D": "Hazy"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Choose the correct use of 'affect' and 'effect' in a sentence.",
+      "options": {
+        "A": "The new law will effect change.",
+        "B": "The new law will affect change.",
+        "C": "The cold weather had an affect on the crops.",
+        "D": "The cold weather had an effect on the crops."
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "What is the synonym for 'pinnacle'?",
+      "options": {
+        "A": "Summit",
+        "B": "Base",
+        "C": "Peak",
+        "D": "Valley"
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "Identify the correctly punctuated sentence:",
+      "options": {
+        "A": "Where is it's leash?",
+        "B": "Where is its' leash?",
+        "C": "Where is its leash?",
+        "D": "Where is its leash."
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "What is the meaning of 'fortuitous'?",
+      "options": {
+        "A": "Planned",
+        "B": "Accidental",
+        "C": "Unlucky",
+        "D": "Deliberate"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Which of the following is a correctly spelled word?",
+      "options": {
+        "A": "Mischievious",
+        "B": "Mischevious",
+        "C": "Mischievous",
+        "D": "Mischivous"
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "What is the plural form of 'phenomenon'?",
+      "options": {
+        "A": "Phenomenons",
+        "B": "Phenomena",
+        "C": "Phenomenos",
+        "D": "Phenomenaes"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Identify the correctly punctuated sentence:",
+      "options": {
+        "A": "The concert was great, but I was too tired to enjoy it.",
+        "B": "The concert was great but, I was too tired to enjoy it.",
+        "C": "The concert was great, but I was too tired to enjoy, it.",
+        "D": "The concert was great but I was too tired to enjoy it."
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Choose the correct form of 'to be' in the sentence: 'He ___ a doctor.'",
+      "options": {
+        "A": "is",
+        "B": "are",
+        "C": "am",
+        "D": "be"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "What is the synonym for 'ephemeral'?",
+      "options": {
+        "A": "Lasting a very short time",
+        "B": "Permanently enduring",
+        "C": "Eternal",
+        "D": "Quick and efficient"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Which of the following is a synonym for 'brave'?",
+      "options": {
+        "A": "Fearful",
+        "B": "Cowardly",
+        "C": "Timid",
+        "D": "Courageous"
+      },
+      "correct_option": "D"
+    },
+    {
+      "question": "What is the antonym of 'generous'?",
+      "options": {
+        "A": "Selfish",
+        "B": "Stingy",
+        "C": "Altruistic",
+        "D": "Liberal"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Choose the correct spelling: 'Occasion' or 'Ocassion'?",
+      "options": {
+        "A": "Occassion",
+        "B": "Occasion",
+        "C": "Ocassion",
+        "D": "Ocasion"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Which word is a synonym for 'fast'?",
+      "options": {
+        "A": "Speedy",
+        "B": "Slow",
+        "C": "Quick",
+        "D": "Lethargic"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "What is the correct plural form of 'child'?",
+      "options": {
+        "A": "Childs",
+        "B": "Children",
+        "C": "Childes",
+        "D": "Childies"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Which sentence is grammatically correct?",
+      "options": {
+        "A": "She don't like coffee.",
+        "B": "He doesn't like coffee.",
+        "C": "They doesn't like coffee.",
+        "D": "I doesn't like coffee."
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "What is the meaning of 'ephemeral'?",
+      "options": {
+        "A": "Lasting a very short time",
+        "B": "Permanently enduring",
+        "C": "Eternal",
+        "D": "Quick and efficient"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Identify the correctly punctuated sentence:",
+      "options": {
+        "A": "I can't believe its over.",
+        "B": "I cant believe it's over.",
+        "C": "I cant believe its over.",
+        "D": "I can't believe it's over."
+      },
+      "correct_option": "D"
+    },
+    {
+      "question": "What is the synonym for 'vivid'?",
+      "options": {
+        "A": "Dull",
+        "B": "Bright",
+        "C": "Pale",
+        "D": "Faint"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Choose the correct form of 'to be' in the sentence: 'She ___ going to the store.'",
+      "options": {
+        "A": "is",
+        "B": "are",
+        "C": "am",
+        "D": "be"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "What does the idiom 'kick the bucket' mean?",
+      "options": {
+        "A": "To buy a bucket",
+        "B": "To die",
+        "C": "To kick a literal bucket",
+        "D": "To go on a vacation"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Which of the following is a correctly spelled word?",
+      "options": {
+        "A": "Recieve",
+        "B": "Receive",
+        "C": "Recievee",
+        "D": "Receeve"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "What is the plural form of 'cactus'?",
+      "options": {
+        "A": "Cactuses",
+        "B": "Cacti",
+        "C": "Cactus",
+        "D": "Cactuss"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Choose the correct meaning of 'meticulous.'",
+      "options": {
+        "A": "Careless",
+        "B": "Detailed and careful",
+        "C": "Sloppy",
+        "D": "Rough"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Which of the following sentences is a compound sentence?",
+      "options": {
+        "A": "The cat is on the mat.",
+        "B": "She ran fast.",
+        "C": "I like ice cream.",
+        "D": "The sun was shining, and the birds were singing."
+      },
+      "correct_option": "D"
+    },
+    {
+      "question": "What is the correct use of 'their,' 'there,' and 'they're' in a sentence?",
+      "options": {
+        "A": "Their going to the park.",
+        "B": "There going to the park.",
+        "C": "They're going to the park.",
+        "D": "Theyre going to the park."
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "Identify the adverb in the sentence: 'She sang beautifully.'",
+      "options": {
+        "A": "She",
+        "B": "Sang",
+        "C": "Beautifully",
+        "D": "Sang beautifully"
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "What is the meaning of 'ubiquitous'?",
+      "options": {
+        "A": "Limited to one location",
+        "B": "Present, appearing, or found everywhere",
+        "C": "Rare",
+        "D": "Temporary"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Choose the correct form of 'to be' in the sentence: 'We ___ going to the party.'",
+      "options": {
+        "A": "is",
+        "B": "are",
+        "C": "am",
+        "D": "be"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "What is the synonym for 'obstinate'?",
+      "options": {
+        "A": "Stubborn",
+        "B": "Flexible",
+        "C": "Compliant",
+        "D": "Docile"
+      },
+      "correct_option": "A"
+    },
     {
       "question": "Which of the following is a synonym for 'happy'?",
       "options": {
@@ -206,6 +1006,406 @@
   ],
 
   "historyQuestions": [
+    {
+      "question": "What ancient civilization is known for building the city of Machu Picchu?",
+      "options": {
+        "A": "Inca Empire",
+        "B": "Maya Civilization",
+        "C": "Aztec Empire",
+        "D": "Roman Empire"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Which European explorer is credited with the first circumnavigation of the globe?",
+      "options": {
+        "A": "Christopher Columbus",
+        "B": "Ferdinand Magellan",
+        "C": "Marco Polo",
+        "D": "Vasco da Gama"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "In what year did the Titanic sink on its maiden voyage?",
+      "options": {
+        "A": 1905,
+        "B": 1912,
+        "C": 1923,
+        "D": 1931
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Who was the leader of the Confederate States of America during the American Civil War?",
+      "options": {
+        "A": "Ulysses S. Grant",
+        "B": "Robert E. Lee",
+        "C": "Jefferson Davis",
+        "D": "Stonewall Jackson"
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "What event is often considered the beginning of the Great Depression in the United States?",
+      "options": {
+        "A": "Stock Market Crash of 1929",
+        "B": "World War I",
+        "C": "Prohibition",
+        "D": "Dust Bowl"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Who was the first emperor of China, known for the construction of the Great Wall?",
+      "options": {
+        "A": "Emperor Qin Shi Huang",
+        "B": "Emperor Han Wudi",
+        "C": "Emperor Tang Taizong",
+        "D": "Emperor Ming Hongwu"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "What treaty officially ended World War I?",
+      "options": {
+        "A": "Treaty of Versailles",
+        "B": "Treaty of Brest-Litovsk",
+        "C": "Treaty of Trianon",
+        "D": "Treaty of Sevres"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Which famous battle in 1066 changed the course of English history and resulted in William the Conqueror becoming the King of England?",
+      "options": {
+        "A": "Battle of Hastings",
+        "B": "Battle of Stamford Bridge",
+        "C": "Battle of Agincourt",
+        "D": "Battle of Bosworth"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Who was the main author of the Communist Manifesto?",
+      "options": {
+        "A": "Karl Marx",
+        "B": "Vladimir Lenin",
+        "C": "Friedrich Engels",
+        "D": "Joseph Stalin"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Which ancient wonder of the world was located in Babylon and known for its terraced gardens?",
+      "options": {
+        "A": "Hanging Gardens of Babylon",
+        "B": "Great Pyramid of Giza",
+        "C": "Statue of Zeus at Olympia",
+        "D": "Temple of Artemis at Ephesus"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Who was the first African American to serve as the President of the United States?",
+      "options": {
+        "A": "Barack Obama",
+        "B": "Martin Luther King Jr.",
+        "C": "Malcolm X",
+        "D": "Frederick Douglass"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Which ancient civilization is known for its Code of Hammurabi?",
+      "options": {
+        "A": "Mesopotamian Civilization",
+        "B": "Indus Valley Civilization",
+        "C": "Egyptian Civilization",
+        "D": "Greek Civilization"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "What was the main cause of the Opium Wars between China and Great Britain in the 19th century?",
+      "options": {
+        "A": "Religious conflicts",
+        "B": "Trade imbalance",
+        "C": "Territorial disputes",
+        "D": "Opium addiction"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Who was the leader of the Soviet Union during the Cuban Missile Crisis?",
+      "options": {
+        "A": "Vladimir Putin",
+        "B": "Leon Trotsky",
+        "C": "Nikita Khrushchev",
+        "D": "Joseph Stalin"
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "What event is considered the beginning of the Renaissance in Europe?",
+      "options": {
+        "A": "Fall of Constantinople",
+        "B": "Black Death",
+        "C": "Printing press invention",
+        "D": "Council of Trent"
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "Who was the famous nurse known for her contributions during the Crimean War and is considered the founder of modern nursing?",
+      "options": {
+        "A": "Florence Nightingale",
+        "B": "Clara Barton",
+        "C": "Mary Seacole",
+        "D": "Dorothea Dix"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "What event led to the establishment of the United Nations in 1945?",
+      "options": {
+        "A": "Treaty of Versailles",
+        "B": "Yalta Conference",
+        "C": "Potsdam Conference",
+        "D": "End of World War II"
+      },
+      "correct_option": "D"
+    },
+    {
+      "question": "Who was the famous queen of ancient Egypt known for her relationships with Julius Caesar and Mark Antony?",
+      "options": {
+        "A": "Cleopatra",
+        "B": "Nefertiti",
+        "C": "Hatshepsut",
+        "D": "Isis"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "What was the main cause of the Boxer Rebellion in China in 1900?",
+      "options": {
+        "A": "Imperialism",
+        "B": "Religious conflicts",
+        "C": "Trade disputes",
+        "D": "Foreign intervention"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Who was the founder of the Mongol Empire in the 13th century?",
+      "options": {
+        "A": "Genghis Khan",
+        "B": "Kublai Khan",
+        "C": "Attila the Hun",
+        "D": "Tamerlane"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Who was the first President of the United States?",
+      "options": {
+        "A": "Thomas Jefferson",
+        "B": "George Washington",
+        "C": "John Adams",
+        "D": "Abraham Lincoln"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "In which year did Christopher Columbus first reach the Americas?",
+      "options": {
+        "A": 1492,
+        "B": 1520,
+        "C": 1607,
+        "D": 1776
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "What event marked the beginning of World War I?",
+      "options": {
+        "A": "The assassination of Archduke Franz Ferdinand",
+        "B": "The sinking of the Lusitania",
+        "C": "The Battle of the Somme",
+        "D": "The signing of the Treaty of Versailles"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Who was the leader of the Soviet Union during World War II?",
+      "options": {
+        "A": "Vladimir Putin",
+        "B": "Joseph Stalin",
+        "C": "Leon Trotsky",
+        "D": "Nikita Khrushchev"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Which ancient civilization built the Great Wall of China?",
+      "options": {
+        "A": "Roman Empire",
+        "B": "Mongol Empire",
+        "C": "Ancient China",
+        "D": "Egyptian Empire"
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "The Magna Carta, signed in 1215, is considered a key milestone in the development of which political concept?",
+      "options": {
+        "A": "Democracy",
+        "B": "Feudalism",
+        "C": "Absolutism",
+        "D": "Communism"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Who was the primary author of the Declaration of Independence?",
+      "options": {
+        "A": "John Adams",
+        "B": "Thomas Jefferson",
+        "C": "Benjamin Franklin",
+        "D": "James Madison"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "What event is often considered the start of the Protestant Reformation?",
+      "options": {
+        "A": "The Council of Trent",
+        "B": "The Diet of Worms",
+        "C": "The Ninety-Five Theses",
+        "D": "The Peace of Augsburg"
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "Who was the first female Prime Minister of the United Kingdom?",
+      "options": {
+        "A": "Margaret Thatcher",
+        "B": "Angela Merkel",
+        "C": "Theresa May",
+        "D": "Queen Elizabeth II"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Which ancient empire was ruled by Julius Caesar, Augustus, and Nero?",
+      "options": {
+        "A": "Roman Empire",
+        "B": "Greek Empire",
+        "C": "Persian Empire",
+        "D": "Ottoman Empire"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "What was the main cause of the French Revolution?",
+      "options": {
+        "A": "Food shortages",
+        "B": "Economic inequality",
+        "C": "Political corruption",
+        "D": "Religious conflicts"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Who was the leader of the Bolsheviks during the Russian Revolution?",
+      "options": {
+        "A": "Vladimir Lenin",
+        "B": "Joseph Stalin",
+        "C": "Leon Trotsky",
+        "D": "Mikhail Gorbachev"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Which ancient civilization is known for its contributions to philosophy, democracy, and the arts?",
+      "options": {
+        "A": "Ancient Egypt",
+        "B": "Ancient China",
+        "C": "Ancient Greece",
+        "D": "Ancient Rome"
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "What was the primary cause of the Dust Bowl during the Great Depression in the 1930s?",
+      "options": {
+        "A": "Financial speculation",
+        "B": "Drought and soil erosion",
+        "C": "Stock market crash",
+        "D": "Mass unemployment"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Which war is often referred to as the 'War of 1812'?",
+      "options": {
+        "A": "American Civil War",
+        "B": "Napoleonic Wars",
+        "C": "Mexican-American War",
+        "D": "War between the United States and Great Britain"
+      },
+      "correct_option": "D"
+    },
+    {
+      "question": "Who was the architect of the United States Constitution and is often called the 'Father of the Constitution'?",
+      "options": {
+        "A": "Thomas Jefferson",
+        "B": "George Washington",
+        "C": "Alexander Hamilton",
+        "D": "James Madison"
+      },
+      "correct_option": "D"
+    },
+    {
+      "question": "What event led to the start of World War II in Europe?",
+      "options": {
+        "A": "The invasion of Poland",
+        "B": "The signing of the Treaty of Versailles",
+        "C": "The Battle of Britain",
+        "D": "The bombing of Pearl Harbor"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Who was the Egyptian queen known for her relationships with Julius Caesar and Mark Antony?",
+      "options": {
+        "A": "Cleopatra",
+        "B": "Hatshepsut",
+        "C": "Nefertiti",
+        "D": "Isis"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "What was the significance of the Emancipation Proclamation during the American Civil War?",
+      "options": {
+        "A": "It abolished slavery in the United States.",
+        "B": "It declared independence from Britain.",
+        "C": "It established the Confederate States.",
+        "D": "It ended the war between the North and the South."
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Who was the leader of the Allied forces during World War II?",
+      "options": {
+        "A": "Winston Churchill",
+        "B": "Joseph Stalin",
+        "C": "Franklin D. Roosevelt",
+        "D": "Dwight D. Eisenhower"
+      },
+      "correct_option": "D"
+    },
     {
       "question": "Who was the first President of the United States?",
       "options": {
@@ -408,6 +1608,406 @@
         "D": "John Glenn"
       },
       "correct_option": "B"
+    },
+    {
+      "question": "What is the largest desert in the world?",
+      "options": {
+        "A": "Sahara Desert",
+        "B": "Gobi Desert",
+        "C": "Antarctica",
+        "D": "Arabian Desert"
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "Who is the author of '1984'?",
+      "options": {
+        "A": "George Orwell",
+        "B": "Aldous Huxley",
+        "C": "Ray Bradbury",
+        "D": "J.K. Rowling"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "What is the chemical symbol for gold?",
+      "options": {
+        "A": "Go",
+        "B": "Au",
+        "C": "Ag",
+        "D": "Ge"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "In what year did the Berlin Wall fall, symbolizing the end of the Cold War?",
+      "options": {
+        "A": 1985,
+        "B": 1989,
+        "C": 1991,
+        "D": 1995
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Which famous scientist formulated the laws of motion and universal gravitation?",
+      "options": {
+        "A": "Galileo Galilei",
+        "B": "Isaac Newton",
+        "C": "Albert Einstein",
+        "D": "Nikola Tesla"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "What is the currency of Brazil?",
+      "options": {
+        "A": "Peso",
+        "B": "Real",
+        "C": "Sol",
+        "D": "Rand"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Who painted 'The Starry Night'?",
+      "options": {
+        "A": "Vincent van Gogh",
+        "B": "Pablo Picasso",
+        "C": "Claude Monet",
+        "D": "Leonardo da Vinci"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "What is the largest bird in the world?",
+      "options": {
+        "A": "Eagle",
+        "B": "Ostrich",
+        "C": "Albatross",
+        "D": "Penguin"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Who wrote 'Pride and Prejudice'?",
+      "options": {
+        "A": "Jane Austen",
+        "B": "Emily Brontë",
+        "C": "Charlotte Brontë",
+        "D": "Charles Dickens"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Which planet is known as the 'Evening Star'?",
+      "options": {
+        "A": "Mars",
+        "B": "Venus",
+        "C": "Jupiter",
+        "D": "Saturn"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "What is the capital of South Africa?",
+      "options": {
+        "A": "Cape Town",
+        "B": "Johannesburg",
+        "C": "Durban",
+        "D": "Pretoria"
+      },
+      "correct_option": "D"
+    },
+    {
+      "question": "Which planet is known as the 'Ice Giant'?",
+      "options": {
+        "A": "Uranus",
+        "B": "Neptune",
+        "C": "Saturn",
+        "D": "Pluto"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Who wrote 'The Great Gatsby'?",
+      "options": {
+        "A": "F. Scott Fitzgerald",
+        "B": "Ernest Hemingway",
+        "C": "J.D. Salinger",
+        "D": "Harper Lee"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "What is the smallest country in the world?",
+      "options": {
+        "A": "Monaco",
+        "B": "Liechtenstein",
+        "C": "Vatican City",
+        "D": "San Marino"
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "In what year did the United States declare its independence?",
+      "options": {
+        "A": 1776,
+        "B": 1789,
+        "C": 1800,
+        "D": 1812
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Who wrote 'The Canterbury Tales'?",
+      "options": {
+        "A": "Geoffrey Chaucer",
+        "B": "John Milton",
+        "C": "William Wordsworth",
+        "D": "Jane Austen"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "What is the largest island in the world?",
+      "options": {
+        "A": "Greenland",
+        "B": "Australia",
+        "C": "Borneo",
+        "D": "Java"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Which gas makes up the majority of Earth's atmosphere?",
+      "options": {
+        "A": "Oxygen",
+        "B": "Carbon Dioxide",
+        "C": "Nitrogen",
+        "D": "Hydrogen"
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "What is the capital of India?",
+      "options": {
+        "A": "Mumbai",
+        "B": "New Delhi",
+        "C": "Kolkata",
+        "D": "Chennai"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Who is the current Prime Minister of Canada?",
+      "options": {
+        "A": "Justin Trudeau",
+        "B": "Andrew Scheer",
+        "C": "Jagmeet Singh",
+        "D": "Elizabeth May"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "What is the capital city of Australia?",
+      "options": {
+        "A": "Sydney",
+        "B": "Melbourne",
+        "C": "Canberra",
+        "D": "Perth"
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "In which year did the Titanic sink?",
+      "options": {
+        "A": 1910,
+        "B": 1912,
+        "C": 1920,
+        "D": 1930
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "What is the largest planet in our solar system?",
+      "options": {
+        "A": "Earth",
+        "B": "Jupiter",
+        "C": "Saturn",
+        "D": "Mars"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Who wrote 'Romeo and Juliet'?",
+      "options": {
+        "A": "Charles Dickens",
+        "B": "William Shakespeare",
+        "C": "Jane Austen",
+        "D": "Mark Twain"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "What is the currency of Japan?",
+      "options": {
+        "A": "Yuan",
+        "B": "Won",
+        "C": "Yen",
+        "D": "Ringgit"
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "Which planet is known as the 'Red Planet'?",
+      "options": {
+        "A": "Venus",
+        "B": "Mars",
+        "C": "Jupiter",
+        "D": "Mercury"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "What is the largest mammal in the world?",
+      "options": {
+        "A": "Elephant",
+        "B": "Blue Whale",
+        "C": "Giraffe",
+        "D": "Hippopotamus"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Which element has the chemical symbol 'O'?",
+      "options": {
+        "A": "Osmium",
+        "B": "Oxygen",
+        "C": "Gold",
+        "D": "Iodine"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Who painted the Mona Lisa?",
+      "options": {
+        "A": "Vincent van Gogh",
+        "B": "Pablo Picasso",
+        "C": "Leonardo da Vinci",
+        "D": "Claude Monet"
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "What is the longest river in the world?",
+      "options": {
+        "A": "Amazon River",
+        "B": "Nile River",
+        "C": "Yangtze River",
+        "D": "Mississippi River"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Who wrote 'To Kill a Mockingbird'?",
+      "options": {
+        "A": "Harper Lee",
+        "B": "J.K. Rowling",
+        "C": "George Orwell",
+        "D": "Ernest Hemingway"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "What is the capital of France?",
+      "options": {
+        "A": "Madrid",
+        "B": "Rome",
+        "C": "Berlin",
+        "D": "Paris"
+      },
+      "correct_option": "D"
+    },
+    {
+      "question": "Which planet is known as the 'Morning Star'?",
+      "options": {
+        "A": "Mars",
+        "B": "Venus",
+        "C": "Jupiter",
+        "D": "Saturn"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "In what year did World War I begin?",
+      "options": {
+        "A": 1905,
+        "B": 1910,
+        "C": 1914,
+        "D": 1918
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "What is the largest ocean on Earth?",
+      "options": {
+        "A": "Atlantic Ocean",
+        "B": "Indian Ocean",
+        "C": "Southern Ocean",
+        "D": "Pacific Ocean"
+      },
+      "correct_option": "D"
+    },
+    {
+      "question": "Who is known as the 'Father of Modern Physics'?",
+      "options": {
+        "A": "Isaac Newton",
+        "B": "Albert Einstein",
+        "C": "Galileo Galilei",
+        "D": "Niels Bohr"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "What is the smallest prime number?",
+      "options": {
+        "A": 0,
+        "B": 1,
+        "C": 2,
+        "D": 3
+      },
+      "correct_option": "C"
+    },
+    {
+      "question": "Who was the first woman to win a Nobel Prize?",
+      "options": {
+        "A": "Marie Curie",
+        "B": "Rosalind Franklin",
+        "C": "Mother Teresa",
+        "D": "Jane Goodall"
+      },
+      "correct_option": "A"
+    },
+    {
+      "question": "Which country is known as the 'Land of the Rising Sun'?",
+      "options": {
+        "A": "China",
+        "B": "Japan",
+        "C": "South Korea",
+        "D": "Vietnam"
+      },
+      "correct_option": "B"
+    },
+    {
+      "question": "Who wrote the play 'Hamlet'?",
+      "options": {
+        "A": "William Shakespeare",
+        "B": "Charles Dickens",
+        "C": "Jane Austen",
+        "D": "Mark Twain"
+      },
+      "correct_option": "A"
     }
   ]
 }
