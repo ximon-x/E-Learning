@@ -67,25 +67,31 @@ class _DashboardState extends State<Dashboard> {
           style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
         ),
       ),
-      Card(
-        elevation: 10,
-        shadowColor: Theme.of(context).primaryColor,
-        child: Lottie.asset("assets/videos/man_lecturing_woman.json"),
-      ),
-      const Padding(padding: EdgeInsets.all(10)),
-      Card(
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5),
+        child: Card(
           elevation: 10,
           shadowColor: Theme.of(context).primaryColor,
-          child: SfCartesianChart(
-              primaryXAxis: DateTimeAxis(),
-              title: ChartTitle(text: "User Activity"),
-              series: const <ChartSeries>[
-                // // Renders scatter chart
-                // ScatterSeries<ChartData, DateTime>(
-                //     dataSource: chartData,
-                //     xValueMapper: (ChartData data, _) => data.x,
-                //     yValueMapper: (ChartData data, _) => data.y)
-              ])),
+          child: Lottie.asset("assets/videos/man_lecturing_woman.json"),
+        ),
+      ),
+      const Padding(padding: EdgeInsets.all(10)),
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5),
+        child: Card(
+            elevation: 10,
+            shadowColor: Theme.of(context).primaryColor,
+            child: SfCartesianChart(
+                primaryXAxis: DateTimeAxis(),
+                title: ChartTitle(text: "User Activity"),
+                series: const <ChartSeries>[
+                  // // Renders scatter chart
+                  // ScatterSeries<ChartData, DateTime>(
+                  //     dataSource: chartData,
+                  //     xValueMapper: (ChartData data, _) => data.x,
+                  //     yValueMapper: (ChartData data, _) => data.y)
+                ])),
+      ),
       const Padding(padding: EdgeInsets.all(10)),
     ])));
   }

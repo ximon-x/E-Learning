@@ -1,5 +1,5 @@
 {
-  "mathQuestions": [
+  "Math": [
     {
       "question": "What is the result of 5 + 3?",
       "options": {
@@ -502,7 +502,7 @@
     }
   ],
 
-  "englishQuestions": [
+  "English": [
     {
       "question": "Which of the following is a homophone for 'flour'?",
       "options": {
@@ -1005,7 +1005,7 @@
     }
   ],
 
-  "historyQuestions": [
+  "History": [
     {
       "question": "What ancient civilization is known for building the city of Machu Picchu?",
       "options": {
@@ -1508,7 +1508,7 @@
     }
   ],
 
-  "generalQuestions": [
+  "General": [
     {
       "question": "Which planet is known as the 'Red Planet'?",
       "options": {
