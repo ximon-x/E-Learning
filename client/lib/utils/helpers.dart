@@ -129,24 +129,31 @@ String getWorstSubject(List<dynamic> scores) {
     }
   }
 
+  num worstScore = subjects.values.first;
   List<String> worstSubjects = [];
-  int worstSubjectScore = 0;
+
+  for (String key in subjects.keys) {
+    num value = subjects[key]!;
+
+    if (value < worstScore) {
+      worstScore = value;
+    }
+  }
 
   for (var subject in subjects.keys) {
-    if (subjects[subject]! <= worstSubjectScore) {
+    if (subjects[subject]! == worstScore) {
       worstSubjects.add(subject);
-      worstSubjectScore = subjects[subject]!.toInt();
     }
   }
 
   switch (worstSubjects.length) {
     case 1:
-      return worstSubjects[0];
+      return "Your worst subject is ${worstSubjects[0]}";
     case 2:
-      return "${worstSubjects[0]} and ${worstSubjects[1]}";
+      return "You're currently struggling with ${worstSubjects[0]} and ${worstSubjects[1]}";
     case 3:
-      return "${worstSubjects[0]}, ${worstSubjects[1]} and ${worstSubjects[2]}";
+      return "These are your worst subjects: ${worstSubjects[0]}, ${worstSubjects[1]} and ${worstSubjects[2]}";
   }
 
-  return "";
+  return "You don't have a worst subject!";
 }

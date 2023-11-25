@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:iLearn/utils/helpers.dart';
-// import 'package:iLearn/utils/helpers.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -20,7 +19,6 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
   String bestSubject = "";
   String worstSubject = "";
   num bestHour = 0;
-  num worstHour = 0;
   num averageScore = 0;
 
   List<ChartData> mathChartDataSource = [];
@@ -68,69 +66,85 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
   }
 
   void handleAnalytics() {
-    EasyLoading.show(
-      status: 'Analyzing...',
-      maskType: EasyLoadingMaskType.black,
-    );
+    try {
+      EasyLoading.show(
+        status: 'Analyzing...',
+        maskType: EasyLoadingMaskType.black,
+      );
 
-    fetchScores().then((value) {
-      setState(() {
-        scores = value;
+      fetchScores().then((value) {
+        setState(() {
+          scores = value;
 
-        int mathTotal = 0;
-        int englishTotal = 0;
-        int historyTotal = 0;
-        int generalTotal = 0;
+          int mathTotal = 0;
+          int englishTotal = 0;
+          int historyTotal = 0;
+          int generalTotal = 0;
 
-        for (var score in scores) {
-          if (score["subject"] == "Math") {
-            mathTotal += 1;
+          for (var score in scores) {
+            if (score["subject"] == "Math") {
+              mathTotal += 1;
 
-            if (score["timestamp"].toDate().difference(DateTime.now()).inDays <
-                30) {
-              mathChartDataSource.add(score["chartData"]);
-            }
-          } else if (score["subject"] == "English") {
-            englishTotal += 1;
+              if (score["timestamp"]
+                      .toDate()
+                      .difference(DateTime.now())
+                      .inDays <
+                  30) {
+                mathChartDataSource.add(score["chartData"]);
+              }
+            } else if (score["subject"] == "English") {
+              englishTotal += 1;
 
-            if (score["timestamp"].toDate().difference(DateTime.now()).inDays <
-                30) {
-              englishChartDataSource.add(score["chartData"]);
-            }
-          } else if (score["subject"] == "History") {
-            historyTotal += 1;
+              if (score["timestamp"]
+                      .toDate()
+                      .difference(DateTime.now())
+                      .inDays <
+                  30) {
+                englishChartDataSource.add(score["chartData"]);
+              }
+            } else if (score["subject"] == "History") {
+              historyTotal += 1;
 
-            if (score["timestamp"].toDate().difference(DateTime.now()).inDays <
-                30) {
-              historyChartDataSource.add(score["chartData"]);
-            }
-          } else if (score["subject"] == "General") {
-            generalTotal += 1;
+              if (score["timestamp"]
+                      .toDate()
+                      .difference(DateTime.now())
+                      .inDays <
+                  30) {
+                historyChartDataSource.add(score["chartData"]);
+              }
+            } else if (score["subject"] == "General") {
+              generalTotal += 1;
 
-            if (score["timestamp"].toDate().difference(DateTime.now()).inDays <
-                30) {
-              generalChartDataSource.add(score["chartData"]);
+              if (score["timestamp"]
+                      .toDate()
+                      .difference(DateTime.now())
+                      .inDays <
+                  30) {
+                generalChartDataSource.add(score["chartData"]);
+              }
             }
           }
-        }
 
-        columnDataSource = [
-          ColumnData(mathTotal, "Math"),
-          ColumnData(englishTotal, "English"),
-          ColumnData(historyTotal, "History"),
-          ColumnData(generalTotal, "General"),
-        ];
+          columnDataSource = [
+            ColumnData(mathTotal, "Math"),
+            ColumnData(englishTotal, "English"),
+            ColumnData(historyTotal, "History"),
+            ColumnData(generalTotal, "General"),
+          ];
 
-        bestHour = getBestHour(scores);
-        bestSubject = getBestSubject(scores);
-        worstHour = getWorstHour(scores);
-        worstSubject = getWorstSubject(scores);
+          bestHour = getBestHour(scores);
+          bestSubject = getBestSubject(scores);
+          worstSubject = getWorstSubject(scores);
 
-        analyzed = true;
+          analyzed = true;
+        });
       });
-    });
 
-    EasyLoading.dismiss();
+      EasyLoading.dismiss();
+    } catch (error) {
+      EasyLoading.showError("Something went wrong. Please try again later.");
+      EasyLoading.showError("Error: $error");
+    }
   }
 
   analyticsRequest() {
@@ -203,7 +217,7 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
               ),
               ListTile(
                 title: Text(
-                  "You performed poorly mostly at $worstSubject",
+                  worstSubject,
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 10),
                 ),
