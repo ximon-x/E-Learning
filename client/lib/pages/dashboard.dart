@@ -19,6 +19,8 @@ class _DashboardState extends State<Dashboard> {
   List<ChartData> historyDataSource = [];
   List<ChartData> generalDataSource = [];
 
+  late TooltipBehavior _tooltip;
+
   fetchScores() async {
     List fetchedScores = [];
     final collection = FirebaseFirestore.instance.collection("scores");
@@ -68,6 +70,8 @@ class _DashboardState extends State<Dashboard> {
       });
     });
 
+    _tooltip = TooltipBehavior(enable: true);
+
     super.initState();
   }
 
@@ -98,6 +102,8 @@ class _DashboardState extends State<Dashboard> {
             elevation: 10,
             shadowColor: Theme.of(context).primaryColor,
             child: SfCartesianChart(
+                legend: const Legend(isVisible: true),
+                tooltipBehavior: _tooltip,
                 primaryXAxis: NumericAxis(
                   minimum: DateTime.now().day - 6,
                   maximum: DateTime.now().day + 1,
@@ -117,10 +123,7 @@ class _DashboardState extends State<Dashboard> {
                       name: "Math",
                       color: Colors.blue,
                       dataSource: mathDataSource,
-                      xValueMapper: (data, _) {
-                        print(data);
-                        return data.day;
-                      },
+                      xValueMapper: (data, _) => data.day,
                       yValueMapper: (data, _) => data.score),
                   ScatterSeries(
                       name: "English",
