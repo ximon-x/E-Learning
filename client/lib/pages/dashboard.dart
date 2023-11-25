@@ -1,6 +1,8 @@
+import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -10,16 +12,45 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  late List<_PieData> _pieData;
+  List scores = [];
+
+  Future fetchScores() async {
+    final fetchedScores = [];
+    final collection = FirebaseFirestore.instance.collection("scores");
+    collection.get().then((value) {
+      for (var element in value.docs) {
+        final data = element.data();
+
+        if (data["user"] == FirebaseAuth.instance.currentUser!.uid) {
+          var score = {
+            "score": element["score"],
+            "date": element["timestamp"].toDate(),
+            "subject": element["subject"]
+          };
+          fetchedScores.add(score);
+        }
+      }
+    });
+
+    //
+    return fetchedScores;
+  }
 
   @override
   initState() {
-    _pieData = [
-      _PieData('Math', 25, 'Math'),
-      _PieData('English', 38, 'English'),
-      _PieData('History', 34, 'History'),
-      _PieData('General', 52, 'General')
-    ];
+    // final List<ChartData> chartData = [
+    //   ChartData(2010, 32),
+    //   ChartData(2011, 40),
+    //   ChartData(2012, 34),
+    //   ChartData(2013, 52),
+    //   ChartData(2014, 42),
+    //   ChartData(2015, 38),
+    //   ChartData(2016, 41),
+    // ];
+
+    fetchScores().then((value) => setState(() {
+          scores = value;
+        }));
 
     super.initState();
   }
@@ -45,27 +76,21 @@ class _DashboardState extends State<Dashboard> {
       Card(
           elevation: 10,
           shadowColor: Theme.of(context).primaryColor,
-          child: SfCircularChart(
-              title: ChartTitle(text: 'Your Performance'),
-              legend: const Legend(isVisible: true),
-              series: <PieSeries<_PieData, String>>[
-                PieSeries<_PieData, String>(
-                    explode: true,
-                    explodeIndex: 0,
-                    dataSource: _pieData,
-                    xValueMapper: (_PieData data, _) => data.xData,
-                    yValueMapper: (_PieData data, _) => data.yData,
-                    dataLabelMapper: (_PieData data, _) => data.text,
-                    dataLabelSettings:
-                        const DataLabelSettings(isVisible: true)),
+          child: SfCartesianChart(
+              primaryXAxis: DateTimeAxis(),
+              title: ChartTitle(text: "User Activity"),
+              series: const <ChartSeries>[
+                // // Renders scatter chart
+                // ScatterSeries<ChartData, DateTime>(
+                //     dataSource: chartData,
+                //     xValueMapper: (ChartData data, _) => data.x,
+                //     yValueMapper: (ChartData data, _) => data.y)
               ])),
+      const Padding(padding: EdgeInsets.all(10)),
     ])));
   }
 }
 
-class _PieData {
-  _PieData(this.xData, this.yData, this.text);
-  final String xData;
-  final num yData;
-  final String text;
+class ChartData {
+  ChartData(int x, int y);
 }

@@ -27,7 +27,6 @@ class _HomePageState extends State<HomePage> {
   Widget home() {
     return Scaffold(
       appBar: AppBar(
-          // title: const Text('i-learn'),
           leading: IconButton(
               icon: const Icon(Icons.person),
               onPressed: () {

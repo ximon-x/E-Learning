@@ -8,7 +8,7 @@ class AnalyticsPage extends StatelessWidget {
 
   void handleAnalytics() {
     EasyLoading.show(
-      status: 'loading...',
+      status: 'Analyzing...',
       maskType: EasyLoadingMaskType.black,
     );
 
@@ -31,8 +31,6 @@ class AnalyticsPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(10),
             child: Column(children: [
-              const Text(
-                  "Take a deep dive and learn about your strengths and weaknesses"),
               ElevatedButton(
                   onPressed: handleAnalytics,
                   child: const Text("Analyze your Stats"))
@@ -173,3 +171,39 @@ class _StackedColumnData {
   final double history;
   final double general;
 }
+
+// late List<_PieData> _pieData;
+
+
+//     _pieData = [
+//       _PieData('Math', 25, 'Math'),
+//       _PieData('English', 38, 'English'),
+//       _PieData('History', 34, 'History'),
+//       _PieData('General', 52, 'General')
+//     ];
+
+      // Card(
+      //     elevation: 10,
+      //     shadowColor: Theme.of(context).primaryColor,
+      //     child: SfCircularChart(
+      //         title: ChartTitle(text: 'Your Performance'),
+      //         legend: const Legend(isVisible: true),
+      //         series: <PieSeries<_PieData, String>>[
+      //           PieSeries<_PieData, String>(
+      //               explode: true,
+      //               explodeIndex: 0,
+      //               dataSource: _pieData,
+      //               xValueMapper: (_PieData data, _) => data.xData,
+      //               yValueMapper: (_PieData data, _) => data.yData,
+      //               dataLabelMapper: (_PieData data, _) => data.text,
+      //               dataLabelSettings:
+      //                   const DataLabelSettings(isVisible: true)),
+      //         ])),
+
+
+// class _PieData {
+//   _PieData(this.xData, this.yData, this.text);
+//   final String xData;
+//   final num yData;
+//   final String text;
+// }

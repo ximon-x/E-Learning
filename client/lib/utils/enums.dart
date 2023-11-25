@@ -1,6 +1,8 @@
+// ignore_for_file: constant_identifier_names
+
 enum Subjects {
-  mathQuestions,
-  englishQuestions,
-  historyQuestions,
-  generalQuestions,
+  Math,
+  English,
+  History,
+  General,
 }

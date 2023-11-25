@@ -12,3 +12,5 @@ const xAppScopes = [
   'email',
   'https://www.googleapis.com/auth/contacts.readonly',
 ];
+
+const serverUrl = "https://ximonx.pythonanywhere.com/";

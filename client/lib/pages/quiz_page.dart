@@ -32,10 +32,10 @@ class _QuizPageState extends State<QuizPage> {
           ),
           body: const TabBarView(
             children: [
-              QuizView(subject: Subjects.mathQuestions),
-              QuizView(subject: Subjects.englishQuestions),
-              QuizView(subject: Subjects.generalQuestions),
-              QuizView(subject: Subjects.historyQuestions),
+              QuizView(subject: Subjects.Math),
+              QuizView(subject: Subjects.English),
+              QuizView(subject: Subjects.General),
+              QuizView(subject: Subjects.History),
             ],
           )),
     );
