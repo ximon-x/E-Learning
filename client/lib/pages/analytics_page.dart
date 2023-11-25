@@ -1,10 +1,71 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:iLearn/utils/helpers.dart';
+// import 'package:iLearn/utils/helpers.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-class AnalyticsPage extends StatelessWidget {
+class AnalyticsPage extends StatefulWidget {
   const AnalyticsPage({Key? key}) : super(key: key);
+
+  @override
+  State<AnalyticsPage> createState() => _AnalyticsPageState();
+}
+
+class _AnalyticsPageState extends State<AnalyticsPage> {
+  late bool analyzed = false;
+
+  String bestSubject = "";
+  String worstSubject = "";
+  num bestHour = 0;
+  num worstHour = 0;
+  num averageScore = 0;
+
+  List<ChartData> mathChartDataSource = [];
+  List<ChartData> englishChartDataSource = [];
+  List<ChartData> historyChartDataSource = [];
+  List<ChartData> generalChartDataSource = [];
+
+  List<ColumnData> columnDataSource = [];
+
+  List scores = [];
+
+  late TooltipBehavior _tooltip;
+
+  fetchScores() async {
+    List fetchedScores = [];
+    final collection = FirebaseFirestore.instance.collection("scores");
+    await collection.get().then((value) {
+      for (var element in value.docs) {
+        final data = element.data();
+
+        // if data is not from current user
+        if (data["user"] != FirebaseAuth.instance.currentUser!.uid) {
+          continue;
+        }
+
+        var score = {
+          "subject": data["subject"],
+          "score": data["score"],
+          "timestamp": data["timestamp"],
+          "chartData": ChartData(data["timestamp"].toDate().day, data["score"]),
+        };
+
+        fetchedScores.add(score);
+      }
+    });
+
+    return fetchedScores;
+  }
+
+  @override
+  initState() {
+    _tooltip = TooltipBehavior(enable: true);
+
+    super.initState();
+  }
 
   void handleAnalytics() {
     EasyLoading.show(
@@ -12,14 +73,67 @@ class AnalyticsPage extends StatelessWidget {
       maskType: EasyLoadingMaskType.black,
     );
 
-    Future.delayed(const Duration(seconds: 3))
-        .then((value) => null)
-        .whenComplete(() =>
-            EasyLoading.showSuccess("Successful Analysis \n Go to Profile"));
+    fetchScores().then((value) {
+      setState(() {
+        scores = value;
+
+        int mathTotal = 0;
+        int englishTotal = 0;
+        int historyTotal = 0;
+        int generalTotal = 0;
+
+        for (var score in scores) {
+          if (score["subject"] == "Math") {
+            mathTotal += 1;
+
+            if (score["timestamp"].toDate().difference(DateTime.now()).inDays <
+                30) {
+              mathChartDataSource.add(score["chartData"]);
+            }
+          } else if (score["subject"] == "English") {
+            englishTotal += 1;
+
+            if (score["timestamp"].toDate().difference(DateTime.now()).inDays <
+                30) {
+              englishChartDataSource.add(score["chartData"]);
+            }
+          } else if (score["subject"] == "History") {
+            historyTotal += 1;
+
+            if (score["timestamp"].toDate().difference(DateTime.now()).inDays <
+                30) {
+              historyChartDataSource.add(score["chartData"]);
+            }
+          } else if (score["subject"] == "General") {
+            generalTotal += 1;
+
+            if (score["timestamp"].toDate().difference(DateTime.now()).inDays <
+                30) {
+              generalChartDataSource.add(score["chartData"]);
+            }
+          }
+        }
+
+        columnDataSource = [
+          ColumnData(mathTotal, "Math"),
+          ColumnData(englishTotal, "English"),
+          ColumnData(historyTotal, "History"),
+          ColumnData(generalTotal, "General"),
+        ];
+
+        bestHour = getBestHour(scores);
+        bestSubject = getBestSubject(scores);
+        worstHour = getWorstHour(scores);
+        worstSubject = getWorstSubject(scores);
+
+        analyzed = true;
+      });
+    });
+
+    EasyLoading.dismiss();
   }
 
-  @override
-  Widget build(BuildContext context) {
+  analyticsRequest() {
     return Scaffold(
       body: Column(
         children: [
@@ -40,170 +154,150 @@ class AnalyticsPage extends StatelessWidget {
       ),
     );
   }
-}
 
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+  analyticsResponse() {
+    return Scaffold(
+        body: SingleChildScrollView(
+            child: Column(children: [
+      Text(
+        "Your Statistics",
+        style: Theme.of(context).textTheme.headlineMedium,
+      ),
+      // Total Tests Taken
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5),
+        child: Card(
+            elevation: 10,
+            shadowColor: Theme.of(context).primaryColor,
+            child: SfCartesianChart(
+                primaryXAxis: CategoryAxis(),
+                primaryYAxis: NumericAxis(minimum: 0, maximum: 20, interval: 4),
+                tooltipBehavior: _tooltip,
+                title: ChartTitle(
+                    text: "Total Tests Taken",
+                    textStyle: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 10)),
+                series: <ChartSeries>[
+                  ColumnSeries(
+                    dataSource: columnDataSource,
+                    xValueMapper: (data, _) => data.subject,
+                    yValueMapper: (data, _) => data.total,
+                  )
+                ])),
+      ),
+      const Padding(padding: EdgeInsets.all(10)),
+      // Your Best Subject
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5),
+        child: Card(
+            elevation: 10,
+            shadowColor: Theme.of(context).primaryColor,
+            child: Column(children: [
+              ListTile(
+                title: Text(
+                  "Your best subject is $bestSubject",
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 10),
+                ),
+                leading: const Icon(Icons.gpp_good_sharp, size: 30),
+              ),
+              // ListTile(
+              //   title: Text(
+              //     "You performed poorly mostly at $worstSubject",
+              //     style: const TextStyle(
+              //         fontWeight: FontWeight.bold, fontSize: 10),
+              //   ),
+              //   leading: const Icon(Icons.alarm_off_sharp, size: 30),
+              // ),
+              ListTile(
+                title: Text(
+                  "You performed the best at $bestHour:00",
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 10),
+                ),
+                leading: const Icon(Icons.alarm_on_sharp, size: 30),
+              ),
+              ListTile(
+                title: Text(
+                  "You didn't perform too well at $worstHour:00",
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 10),
+                ),
+                leading: const Icon(Icons.gpp_bad_sharp, size: 30),
+              ),
+            ])),
+      ),
 
-  @override
-  State<ProfilePage> createState() => _ProfilePageState();
-}
-
-class _ProfilePageState extends State<ProfilePage> {
-  late List<_ChartData> _chartData;
-  late List<_StackedColumnData> _stackedColumnData;
-  late TooltipBehavior _tooltip;
-
-  @override
-  initState() {
-    _chartData = [
-      _ChartData('Jun', 23),
-      _ChartData('Jul', 59),
-      _ChartData('Aug', 34),
-      _ChartData('Sep', 49),
-      _ChartData('Oct', 67)
-    ];
-
-    _stackedColumnData = [
-      _StackedColumnData("Oct 4", 67, 64, 52, 32),
-      _StackedColumnData("Oct 5", 72, 74, 54, 40),
-      _StackedColumnData("Oct 6", 57, 34, 59, 32),
-      _StackedColumnData("Oct 7", 72, 44, 60, 75),
-      _StackedColumnData("Oct 8", 72, 54, 32, 91),
-    ];
-
-    _tooltip = TooltipBehavior(enable: true);
-
-    super.initState();
+      const Padding(padding: EdgeInsets.all(10)),
+      // Tests Taken
+      Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5),
+        child: Card(
+            elevation: 10,
+            shadowColor: Theme.of(context).primaryColor,
+            child: SfCartesianChart(
+                title: ChartTitle(
+                    text: "Activity (Past Month)",
+                    textStyle: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 10)),
+                primaryXAxis: NumericAxis(
+                  minimum:
+                      DateTime.now().day - 30 < 0 ? 0 : DateTime.now().day - 30,
+                  maximum: DateTime.now().day + 1,
+                  interval: 3,
+                ),
+                primaryYAxis: NumericAxis(
+                  minimum: 0,
+                  maximum: 10,
+                  interval: 2,
+                ),
+                tooltipBehavior: _tooltip,
+                series: <ChartSeries>[
+                  LineSeries<ChartData, int>(
+                      color: Colors.blue,
+                      dataSource: mathChartDataSource,
+                      xValueMapper: (ChartData data, _) => data.day,
+                      yValueMapper: (ChartData data, _) => data.score,
+                      name: "Math"),
+                  LineSeries<ChartData, int>(
+                      color: Colors.red,
+                      dataSource: englishChartDataSource,
+                      xValueMapper: (ChartData data, _) => data.day,
+                      yValueMapper: (ChartData data, _) => data.score,
+                      name: "English"),
+                  LineSeries<ChartData, int>(
+                      color: Colors.green,
+                      dataSource: historyChartDataSource,
+                      xValueMapper: (ChartData data, _) => data.day,
+                      yValueMapper: (ChartData data, _) => data.score,
+                      name: "History"),
+                  LineSeries<ChartData, int>(
+                      color: Colors.yellow,
+                      dataSource: generalChartDataSource,
+                      xValueMapper: (ChartData data, _) => data.day,
+                      yValueMapper: (ChartData data, _) => data.score,
+                      name: "General"),
+                ])),
+      )
+    ])));
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Profile Page"),
-        leading: IconButton(
-            icon: const Icon(Icons.arrow_back),
-            onPressed: () {
-              Navigator.pushReplacementNamed(context, "/home");
-            }),
-      ),
-      body: Column(children: [
-        const ListTile(
-          title: Text("Below are your stats"),
-          leading: Icon(Icons.person_sharp, size: 50),
-        ),
-        Card(
-            elevation: 10,
-            shadowColor: Theme.of(context).primaryColor,
-            child: SfCartesianChart(
-                legend: const Legend(isVisible: true),
-                primaryXAxis: CategoryAxis(),
-                primaryYAxis:
-                    NumericAxis(minimum: 50, maximum: 400, interval: 50),
-                tooltipBehavior: _tooltip,
-                series: <ChartSeries>[
-                  StackedColumnSeries<_StackedColumnData, String>(
-                      dataSource: _stackedColumnData,
-                      xValueMapper: (_StackedColumnData score, _) => score.day,
-                      yValueMapper: (_StackedColumnData score, _) => score.math,
-                      name: 'Math',
-                      markerSettings: const MarkerSettings(isVisible: true)),
-                  StackedColumnSeries<_StackedColumnData, String>(
-                      dataSource: _stackedColumnData,
-                      xValueMapper: (_StackedColumnData score, _) => score.day,
-                      yValueMapper: (_StackedColumnData score, _) =>
-                          score.english,
-                      name: 'English',
-                      markerSettings: const MarkerSettings(isVisible: true)),
-                  StackedColumnSeries<_StackedColumnData, String>(
-                      dataSource: _stackedColumnData,
-                      xValueMapper: (_StackedColumnData score, _) => score.day,
-                      yValueMapper: (_StackedColumnData score, _) =>
-                          score.general,
-                      name: 'General',
-                      markerSettings: const MarkerSettings(isVisible: true)),
-                  StackedColumnSeries<_StackedColumnData, String>(
-                      dataSource: _stackedColumnData,
-                      xValueMapper: (_StackedColumnData score, _) => score.day,
-                      yValueMapper: (_StackedColumnData score, _) =>
-                          score.history,
-                      name: 'History',
-                      markerSettings: const MarkerSettings(isVisible: true)),
-                ])),
-        Card(
-          elevation: 10,
-          shadowColor: Theme.of(context).primaryColor,
-          child: SfCartesianChart(
-            primaryXAxis: CategoryAxis(),
-            primaryYAxis: NumericAxis(minimum: 20, maximum: 80, interval: 10),
-            tooltipBehavior: _tooltip,
-            series: <ChartSeries<_ChartData, String>>[
-              LineSeries<_ChartData, String>(
-                  dataSource: _chartData,
-                  xValueMapper: (_ChartData sales, _) => sales.x,
-                  yValueMapper: (_ChartData sales, _) => sales.y,
-                  name: 'Sales',
-                  dataLabelSettings: const DataLabelSettings(isVisible: true))
-            ],
-          ),
-        ),
-      ]),
-    );
+    return analyzed ? analyticsResponse() : analyticsRequest();
   }
 }
 
-class _ChartData {
-  _ChartData(this.x, this.y);
+class ColumnData {
+  ColumnData(this.total, this.subject);
 
-  final String x;
-  final double y;
+  final int total;
+  final String subject;
 }
 
-class _StackedColumnData {
-  _StackedColumnData(
-      this.day, this.math, this.english, this.history, this.general);
+class ChartData {
+  ChartData(this.day, this.score);
 
-  final String day;
-
-  final double math;
-  final double english;
-  final double history;
-  final double general;
+  final int day;
+  final int score;
 }
-
-// late List<_PieData> _pieData;
-
-
-//     _pieData = [
-//       _PieData('Math', 25, 'Math'),
-//       _PieData('English', 38, 'English'),
-//       _PieData('History', 34, 'History'),
-//       _PieData('General', 52, 'General')
-//     ];
-
-      // Card(
-      //     elevation: 10,
-      //     shadowColor: Theme.of(context).primaryColor,
-      //     child: SfCircularChart(
-      //         title: ChartTitle(text: 'Your Performance'),
-      //         legend: const Legend(isVisible: true),
-      //         series: <PieSeries<_PieData, String>>[
-      //           PieSeries<_PieData, String>(
-      //               explode: true,
-      //               explodeIndex: 0,
-      //               dataSource: _pieData,
-      //               xValueMapper: (_PieData data, _) => data.xData,
-      //               yValueMapper: (_PieData data, _) => data.yData,
-      //               dataLabelMapper: (_PieData data, _) => data.text,
-      //               dataLabelSettings:
-      //                   const DataLabelSettings(isVisible: true)),
-      //         ])),
-
-
-// class _PieData {
-//   _PieData(this.xData, this.yData, this.text);
-//   final String xData;
-//   final num yData;
-//   final String text;
-// }

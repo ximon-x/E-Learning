@@ -3,8 +3,7 @@ import 'package:iLearn/pages/analytics_page.dart';
 import 'package:iLearn/pages/home_page.dart';
 import 'package:iLearn/pages/quiz_page.dart';
 import 'package:iLearn/themes/app_theme.dart';
-import 'package:firebase_auth/firebase_auth.dart'
-    hide EmailAuthProvider, GoogleAuthProvider;
+import 'package:firebase_auth/firebase_auth.dart' hide EmailAuthProvider;
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:firebase_ui_oauth_google/firebase_ui_oauth_google.dart';
@@ -20,14 +19,6 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  const googleClientId =
-      "441078407889-r3uvegehsok186nsthu6gaqofmfpjhtl.apps.googleusercontent.com";
-
-  FirebaseUIAuth.configureProviders([
-    EmailAuthProvider(),
-    GoogleProvider(clientId: googleClientId),
-  ]);
-
   FlutterNativeSplash.remove();
   runApp(const MyApp());
 }
@@ -37,18 +28,22 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final providers = [EmailAuthProvider()];
+    const googleClientId =
+        "441078407889-r3uvegehsok186nsthu6gaqofmfpjhtl.apps.googleusercontent.com";
+
     return MaterialApp(
         initialRoute:
             FirebaseAuth.instance.currentUser == null ? '/sign-in' : '/home',
         routes: {
           "/home": (context) => const HomePage(),
           "/analytics": (context) => const AnalyticsPage(),
-          // "/profile": (context) => const ProfilePage(),
           "/quiz": (context) => const QuizPage(),
           '/sign-in': (context) {
             return SignInScreen(
-              providers: providers,
+              providers: [
+                EmailAuthProvider(),
+                GoogleProvider(clientId: googleClientId)
+              ],
               actions: [
                 AuthStateChangeAction<SignedIn>((context, state) {
                   Navigator.pushReplacementNamed(context, '/home');
@@ -58,7 +53,10 @@ class MyApp extends StatelessWidget {
           },
           '/profile': (context) {
             return ProfileScreen(
-              providers: providers,
+              providers: [
+                EmailAuthProvider(),
+                GoogleProvider(clientId: googleClientId)
+              ],
               actions: [
                 SignedOutAction((context) {
                   Navigator.pushReplacementNamed(context, '/sign-in');

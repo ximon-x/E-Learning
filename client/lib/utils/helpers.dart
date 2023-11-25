@@ -37,3 +37,116 @@ String getOption(int index) {
       throw Exception("Invalid option index");
   }
 }
+
+num getBestHour(List<dynamic> scores) {
+  Map<int, num> hours = {};
+
+  for (var score in scores) {
+    int hour = score["timestamp"].toDate().hour;
+
+    if (hours.containsKey(hour)) {
+      hours[hour] = hours[hour]! + score["score"];
+    } else {
+      hours[hour] = 0;
+    }
+  }
+
+  int bestHour = 0;
+  int bestHourScore = 0;
+
+  for (var hour in hours.keys) {
+    if (hours[hour]! > bestHourScore) {
+      bestHour = hour;
+      bestHourScore = hours[hour]!.toInt();
+    }
+  }
+
+  return bestHour;
+}
+
+String getBestSubject(List<dynamic> scores) {
+  Map<String, num> subjects = {};
+
+  for (var score in scores) {
+    String subject = score["subject"];
+
+    if (subjects.containsKey(subject)) {
+      subjects[subject] = subjects[subject]! + score["score"];
+    } else {
+      subjects[subject] = 0;
+    }
+  }
+
+  String bestSubject = "";
+  int bestSubjectScore = 0;
+
+  for (var subject in subjects.keys) {
+    if (subjects[subject]! >= bestSubjectScore) {
+      bestSubject = subject;
+      bestSubjectScore = subjects[subject]!.toInt();
+    }
+  }
+
+  return bestSubject;
+}
+
+num getWorstHour(List<dynamic> scores) {
+  Map<int, num> hours = {};
+
+  for (var score in scores) {
+    int hour = score["timestamp"].toDate().hour;
+
+    if (hours.containsKey(hour)) {
+      hours[hour] = hours[hour]! + score[score];
+    } else {
+      hours[hour] = 1;
+    }
+  }
+
+  int worstHour = 0;
+  int worstHourScore = 0;
+
+  for (var hour in hours.keys) {
+    if (hours[hour]! <= worstHourScore) {
+      worstHour = hour;
+      worstHourScore = hours[hour]!.toInt();
+    }
+  }
+
+  return worstHour;
+}
+
+String getWorstSubject(List<dynamic> scores) {
+  Map<String, num> subjects = {};
+
+  for (var score in scores) {
+    String subject = score["subject"];
+
+    if (subjects.containsKey(subject)) {
+      subjects[subject] = subjects[subject]! + score["score"];
+    } else {
+      subjects[subject] = 1;
+    }
+  }
+
+  List<String> worstSubjects = [];
+  int worstSubjectScore = 0;
+
+  for (var subject in subjects.keys) {
+    if (subjects[subject]! <= worstSubjectScore) {
+      worstSubjects.add(subject);
+      worstSubjectScore = subjects[subject]!.toInt();
+    }
+  }
+
+  switch (worstSubjects.length) {
+    case 1:
+      return worstSubjects[0];
+    case 2:
+      return "${worstSubjects[0]} and ${worstSubjects[1]}";
+    case 3:
+      return "${worstSubjects[0]}, ${worstSubjects[1]} and ${worstSubjects[2]}";
+  }
+
+  return "";
+}

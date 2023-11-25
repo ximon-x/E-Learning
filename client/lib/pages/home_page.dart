@@ -81,10 +81,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // if (firebase != null && firebase?.user != null) {
-    //   return home();
-    // }
-
     return home();
   }
 }

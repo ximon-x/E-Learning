@@ -12,21 +12,21 @@ class AboutPage extends StatelessWidget {
       ListTile(
         title: Text(
           "Developed by Oluwatosin Olubudun",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
         ),
         leading: Icon(Icons.person_sharp, size: 30),
       ),
       ListTile(
         title: Text(
           "001273051",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
         ),
         leading: Icon(Icons.numbers, size: 30),
       ),
       ListTile(
         title: Text(
           "Built using Flutter and Flask",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 10),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
         ),
         leading: Icon(Icons.devices_sharp, size: 30),
       ),
