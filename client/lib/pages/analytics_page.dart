@@ -201,14 +201,14 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
                 ),
                 leading: const Icon(Icons.gpp_good_sharp, size: 30),
               ),
-              // ListTile(
-              //   title: Text(
-              //     "You performed poorly mostly at $worstSubject",
-              //     style: const TextStyle(
-              //         fontWeight: FontWeight.bold, fontSize: 10),
-              //   ),
-              //   leading: const Icon(Icons.alarm_off_sharp, size: 30),
-              // ),
+              ListTile(
+                title: Text(
+                  "You performed poorly mostly at $worstSubject",
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 10),
+                ),
+                leading: const Icon(Icons.gpp_bad_sharp, size: 30),
+              ),
               ListTile(
                 title: Text(
                   "You performed the best at $bestHour:00",
@@ -217,14 +217,14 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
                 ),
                 leading: const Icon(Icons.alarm_on_sharp, size: 30),
               ),
-              ListTile(
-                title: Text(
-                  "You didn't perform too well at $worstHour:00",
-                  style: const TextStyle(
-                      fontWeight: FontWeight.bold, fontSize: 10),
-                ),
-                leading: const Icon(Icons.gpp_bad_sharp, size: 30),
-              ),
+              // ListTile(
+              //   title: Text(
+              //     "You didn't perform too well at $worstHour:00",
+              //     style: const TextStyle(
+              //         fontWeight: FontWeight.bold, fontSize: 10),
+              //   ),
+              //   leading: const Icon(Icons.gpp_bad_sharp, size: 30),
+              // ),
             ])),
       ),
 
