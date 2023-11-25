@@ -14,43 +14,59 @@ class Dashboard extends StatefulWidget {
 class _DashboardState extends State<Dashboard> {
   List scores = [];
 
-  Future fetchScores() async {
-    final fetchedScores = [];
+  List<ChartData> mathDataSource = [];
+  List<ChartData> englishDataSource = [];
+  List<ChartData> historyDataSource = [];
+  List<ChartData> generalDataSource = [];
+
+  fetchScores() async {
+    List fetchedScores = [];
     final collection = FirebaseFirestore.instance.collection("scores");
-    collection.get().then((value) {
+    await collection.get().then((value) {
       for (var element in value.docs) {
         final data = element.data();
 
-        if (data["user"] == FirebaseAuth.instance.currentUser!.uid) {
-          var score = {
-            "score": element["score"],
-            "date": element["timestamp"].toDate(),
-            "subject": element["subject"]
-          };
-          fetchedScores.add(score);
+        // if data is not older than 7 days
+        if (data["timestamp"].toDate().difference(DateTime.now()).inDays > 7) {
+          continue;
         }
+
+        // if data is not from current user
+        if (data["user"] != FirebaseAuth.instance.currentUser!.uid) {
+          continue;
+        }
+
+        var score = {
+          "subject": data["subject"],
+          "chartData": ChartData(data["timestamp"].toDate().day, data["score"])
+        };
+
+        fetchedScores.add(score);
       }
     });
 
-    //
     return fetchedScores;
   }
 
   @override
   initState() {
-    // final List<ChartData> chartData = [
-    //   ChartData(2010, 32),
-    //   ChartData(2011, 40),
-    //   ChartData(2012, 34),
-    //   ChartData(2013, 52),
-    //   ChartData(2014, 42),
-    //   ChartData(2015, 38),
-    //   ChartData(2016, 41),
-    // ];
+    fetchScores().then((value) {
+      setState(() {
+        scores = value;
 
-    fetchScores().then((value) => setState(() {
-          scores = value;
-        }));
+        for (var score in scores) {
+          if (score["subject"] == "Math") {
+            mathDataSource.add(score["chartData"]);
+          } else if (score["subject"] == "English") {
+            englishDataSource.add(score["chartData"]);
+          } else if (score["subject"] == "History") {
+            historyDataSource.add(score["chartData"]);
+          } else if (score["subject"] == "General") {
+            generalDataSource.add(score["chartData"]);
+          }
+        }
+      });
+    });
 
     super.initState();
   }
@@ -82,14 +98,48 @@ class _DashboardState extends State<Dashboard> {
             elevation: 10,
             shadowColor: Theme.of(context).primaryColor,
             child: SfCartesianChart(
-                primaryXAxis: DateTimeAxis(),
-                title: ChartTitle(text: "User Activity"),
-                series: const <ChartSeries>[
-                  // // Renders scatter chart
-                  // ScatterSeries<ChartData, DateTime>(
-                  //     dataSource: chartData,
-                  //     xValueMapper: (ChartData data, _) => data.x,
-                  //     yValueMapper: (ChartData data, _) => data.y)
+                primaryXAxis: NumericAxis(
+                  minimum: DateTime.now().day - 6,
+                  maximum: DateTime.now().day + 1,
+                  interval: 1,
+                ),
+                primaryYAxis: NumericAxis(
+                  minimum: 0,
+                  maximum: 10,
+                  interval: 2,
+                ),
+                title: ChartTitle(
+                    text: "Performance (Last 7 Days)",
+                    textStyle: const TextStyle(
+                        fontSize: 10, fontWeight: FontWeight.bold)),
+                series: <ChartSeries>[
+                  ScatterSeries(
+                      name: "Math",
+                      color: Colors.blue,
+                      dataSource: mathDataSource,
+                      xValueMapper: (data, _) {
+                        print(data);
+                        return data.day;
+                      },
+                      yValueMapper: (data, _) => data.score),
+                  ScatterSeries(
+                      name: "English",
+                      color: Colors.red,
+                      dataSource: englishDataSource,
+                      xValueMapper: (data, _) => data.day,
+                      yValueMapper: (data, _) => data.score),
+                  ScatterSeries(
+                      name: "History",
+                      color: Colors.green,
+                      dataSource: historyDataSource,
+                      xValueMapper: (data, _) => data.day,
+                      yValueMapper: (data, _) => data.score),
+                  ScatterSeries(
+                      name: "General",
+                      color: Colors.yellow,
+                      dataSource: generalDataSource,
+                      xValueMapper: (data, _) => data.day,
+                      yValueMapper: (data, _) => data.score),
                 ])),
       ),
       const Padding(padding: EdgeInsets.all(10)),
@@ -98,5 +148,8 @@ class _DashboardState extends State<Dashboard> {
 }
 
 class ChartData {
-  ChartData(int x, int y);
+  ChartData(this.day, this.score);
+
+  final int day;
+  final int score;
 }
