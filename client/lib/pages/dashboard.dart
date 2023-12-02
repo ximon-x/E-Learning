@@ -1,8 +1,15 @@
-import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
+
+class ChartData {
+  final int day;
+
+  final int score;
+  ChartData(this.day, this.score);
+}
 
 class Dashboard extends StatefulWidget {
   const Dashboard({Key? key}) : super(key: key);
@@ -20,60 +27,6 @@ class _DashboardState extends State<Dashboard> {
   List<ChartData> generalDataSource = [];
 
   late TooltipBehavior _tooltip;
-
-  fetchScores() async {
-    List fetchedScores = [];
-    final collection = FirebaseFirestore.instance.collection("scores");
-    await collection.get().then((value) {
-      for (var element in value.docs) {
-        final data = element.data();
-
-        // if data is not older than 7 days
-        if (data["timestamp"].toDate().difference(DateTime.now()).inDays > 7) {
-          continue;
-        }
-
-        // if data is not from current user
-        if (data["user"] != FirebaseAuth.instance.currentUser!.uid) {
-          continue;
-        }
-
-        var score = {
-          "subject": data["subject"],
-          "chartData": ChartData(data["timestamp"].toDate().day, data["score"])
-        };
-
-        fetchedScores.add(score);
-      }
-    });
-
-    return fetchedScores;
-  }
-
-  @override
-  initState() {
-    fetchScores().then((value) {
-      setState(() {
-        scores = value;
-
-        for (var score in scores) {
-          if (score["subject"] == "Math") {
-            mathDataSource.add(score["chartData"]);
-          } else if (score["subject"] == "English") {
-            englishDataSource.add(score["chartData"]);
-          } else if (score["subject"] == "History") {
-            historyDataSource.add(score["chartData"]);
-          } else if (score["subject"] == "General") {
-            generalDataSource.add(score["chartData"]);
-          }
-        }
-      });
-    });
-
-    _tooltip = TooltipBehavior(enable: true);
-
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -148,11 +101,58 @@ class _DashboardState extends State<Dashboard> {
       const Padding(padding: EdgeInsets.all(10)),
     ])));
   }
-}
 
-class ChartData {
-  ChartData(this.day, this.score);
+  fetchScores() async {
+    List fetchedScores = [];
+    final collection = FirebaseFirestore.instance.collection("scores");
+    await collection.get().then((value) {
+      for (var element in value.docs) {
+        final data = element.data();
 
-  final int day;
-  final int score;
+        // if data is not older than 7 days
+        if (data["timestamp"].toDate().difference(DateTime.now()).inDays > 7) {
+          continue;
+        }
+
+        // if data is not from current user
+        if (data["user"] != FirebaseAuth.instance.currentUser!.uid) {
+          continue;
+        }
+
+        var score = {
+          "subject": data["subject"],
+          "chartData": ChartData(data["timestamp"].toDate().day, data["score"])
+        };
+
+        fetchedScores.add(score);
+      }
+    });
+
+    return fetchedScores;
+  }
+
+  @override
+  initState() {
+    fetchScores().then((value) {
+      setState(() {
+        scores = value;
+
+        for (var score in scores) {
+          if (score["subject"] == "Math") {
+            mathDataSource.add(score["chartData"]);
+          } else if (score["subject"] == "English") {
+            englishDataSource.add(score["chartData"]);
+          } else if (score["subject"] == "History") {
+            historyDataSource.add(score["chartData"]);
+          } else if (score["subject"] == "General") {
+            generalDataSource.add(score["chartData"]);
+          }
+        }
+      });
+    });
+
+    _tooltip = TooltipBehavior(enable: true);
+
+    super.initState();
+  }
 }

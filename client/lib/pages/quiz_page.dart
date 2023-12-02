@@ -1,7 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:iLearn/components/quiz_modal.dart';
 import 'package:iLearn/utils/classes.dart';
 import 'package:iLearn/utils/enums.dart';
-import 'package:flutter/material.dart';
 
 class QuizPage extends StatefulWidget {
   const QuizPage({Key? key}) : super(key: key);

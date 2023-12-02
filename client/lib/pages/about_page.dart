@@ -11,7 +11,7 @@ class AboutPage extends StatelessWidget {
                 child: Column(children: [
       ListTile(
         title: Text(
-          "Developed by Oluwatosin Olubudun",
+          "Developed by Oluwatosin Olubodun",
           style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
         ),
         leading: Icon(Icons.person_sharp, size: 30),

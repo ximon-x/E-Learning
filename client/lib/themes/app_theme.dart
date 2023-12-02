@@ -1,10 +1,7 @@
-import 'package:iLearn/themes/text_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:iLearn/themes/text_theme.dart';
 
 class XAppTheme {
-  // This class is not meant to be instantiated or extended; this constructor
-  XAppTheme._();
-
   static ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     textTheme: XTextTheme.lightTextTheme,
@@ -14,4 +11,7 @@ class XAppTheme {
     brightness: Brightness.dark,
     textTheme: XTextTheme.darkTextTheme,
   );
+
+  // This class is not meant to be instantiated or extended; this constructor
+  XAppTheme._();
 }

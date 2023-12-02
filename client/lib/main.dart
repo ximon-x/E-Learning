@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:firebase_ui_oauth_google/firebase_ui_oauth_google.dart';
 import 'package:flutter/foundation.dart';
 import 'package:iLearn/firebase_options.dart';
 import 'package:iLearn/pages/analytics_page.dart';
@@ -35,8 +36,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // const googleClientId =
-    //     "441078407889-r3uvegehsok186nsthu6gaqofmfpjhtl.apps.googleusercontent.com";
+    const googleClientId =
+        "441078407889-r3uvegehsok186nsthu6gaqofmfpjhtl.apps.googleusercontent.com";
 
     return MaterialApp(
         initialRoute:
@@ -49,7 +50,7 @@ class MyApp extends StatelessWidget {
             return SignInScreen(
               providers: [
                 EmailAuthProvider(),
-                // GoogleProvider(clientId: googleClientId)
+                GoogleProvider(clientId: googleClientId)
               ],
               actions: [
                 AuthStateChangeAction<SignedIn>((context, state) {
@@ -62,7 +63,7 @@ class MyApp extends StatelessWidget {
             return ProfileScreen(
               providers: [
                 EmailAuthProvider(),
-                // GoogleProvider(clientId: googleClientId)
+                GoogleProvider(clientId: googleClientId)
               ],
               actions: [
                 SignedOutAction((context) {

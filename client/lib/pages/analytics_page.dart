@@ -1,16 +1,30 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:iLearn/utils/helpers.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
 
 class AnalyticsPage extends StatefulWidget {
   const AnalyticsPage({Key? key}) : super(key: key);
 
   @override
   State<AnalyticsPage> createState() => _AnalyticsPageState();
+}
+
+class ChartData {
+  final int day;
+
+  final int score;
+  ChartData(this.day, this.score);
+}
+
+class ColumnData {
+  final int total;
+
+  final String subject;
+  ColumnData(this.total, this.subject);
 }
 
 class _AnalyticsPageState extends State<AnalyticsPage> {
@@ -31,121 +45,6 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
   List scores = [];
 
   late TooltipBehavior _tooltip;
-
-  fetchScores() async {
-    List fetchedScores = [];
-    final collection = FirebaseFirestore.instance.collection("scores");
-    await collection.get().then((value) {
-      for (var element in value.docs) {
-        final data = element.data();
-
-        // if data is not from current user
-        if (data["user"] != FirebaseAuth.instance.currentUser!.uid) {
-          continue;
-        }
-
-        var score = {
-          "subject": data["subject"],
-          "score": data["score"],
-          "timestamp": data["timestamp"],
-          "chartData": ChartData(data["timestamp"].toDate().day, data["score"]),
-        };
-
-        fetchedScores.add(score);
-      }
-    });
-
-    return fetchedScores;
-  }
-
-  @override
-  initState() {
-    _tooltip = TooltipBehavior(enable: true);
-
-    super.initState();
-  }
-
-  void handleAnalytics() {
-    try {
-      EasyLoading.show(
-        status: 'Analyzing...',
-        maskType: EasyLoadingMaskType.black,
-      );
-
-      fetchScores().then((value) {
-        setState(() {
-          scores = value;
-
-          int mathTotal = 0;
-          int englishTotal = 0;
-          int historyTotal = 0;
-          int generalTotal = 0;
-
-          for (var score in scores) {
-            if (score["subject"] == "Math") {
-              mathTotal += 1;
-
-              if (score["timestamp"]
-                      .toDate()
-                      .difference(DateTime.now())
-                      .inDays <
-                  30) {
-                mathChartDataSource.add(score["chartData"]);
-              }
-            } else if (score["subject"] == "English") {
-              englishTotal += 1;
-
-              if (score["timestamp"]
-                      .toDate()
-                      .difference(DateTime.now())
-                      .inDays <
-                  30) {
-                englishChartDataSource.add(score["chartData"]);
-              }
-            } else if (score["subject"] == "History") {
-              historyTotal += 1;
-
-              if (score["timestamp"]
-                      .toDate()
-                      .difference(DateTime.now())
-                      .inDays <
-                  30) {
-                historyChartDataSource.add(score["chartData"]);
-              }
-            } else if (score["subject"] == "General") {
-              generalTotal += 1;
-
-              if (score["timestamp"]
-                      .toDate()
-                      .difference(DateTime.now())
-                      .inDays <
-                  30) {
-                generalChartDataSource.add(score["chartData"]);
-              }
-            }
-          }
-
-          columnDataSource = [
-            ColumnData(mathTotal, "Math"),
-            ColumnData(englishTotal, "English"),
-            ColumnData(historyTotal, "History"),
-            ColumnData(generalTotal, "General"),
-          ];
-
-          bestHour = getBestHour(scores);
-          bestSubject = getBestSubject(scores);
-          worstSubject = getWorstSubject(scores);
-
-          analyzed = true;
-        });
-      });
-
-      EasyLoading.dismiss();
-    } catch (error) {
-      EasyLoading.showError("Something went wrong. Please try again later.");
-      EasyLoading.showError("Error: $error");
-    }
-  }
 
   analyticsRequest() {
     return Scaffold(
@@ -300,18 +199,119 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
   Widget build(BuildContext context) {
     return analyzed ? analyticsResponse() : analyticsRequest();
   }
-}
 
-class ColumnData {
-  ColumnData(this.total, this.subject);
+  fetchScores() async {
+    List fetchedScores = [];
+    final collection = FirebaseFirestore.instance.collection("scores");
+    await collection.get().then((value) {
+      for (var element in value.docs) {
+        final data = element.data();
 
-  final int total;
-  final String subject;
-}
+        // if data is not from current user
+        if (data["user"] != FirebaseAuth.instance.currentUser!.uid) {
+          continue;
+        }
 
-class ChartData {
-  ChartData(this.day, this.score);
+        var score = {
+          "subject": data["subject"],
+          "score": data["score"],
+          "timestamp": data["timestamp"],
+          "chartData": ChartData(data["timestamp"].toDate().day, data["score"]),
+        };
 
-  final int day;
-  final int score;
+        fetchedScores.add(score);
+      }
+    });
+
+    return fetchedScores;
+  }
+
+  void handleAnalytics() {
+    try {
+      EasyLoading.show(
+        status: 'Analyzing...',
+        maskType: EasyLoadingMaskType.black,
+      );
+
+      fetchScores().then((value) {
+        setState(() {
+          scores = value;
+
+          int mathTotal = 0;
+          int englishTotal = 0;
+          int historyTotal = 0;
+          int generalTotal = 0;
+
+          for (var score in scores) {
+            if (score["subject"] == "Math") {
+              mathTotal += 1;
+
+              if (score["timestamp"]
+                      .toDate()
+                      .difference(DateTime.now())
+                      .inDays <
+                  30) {
+                mathChartDataSource.add(score["chartData"]);
+              }
+            } else if (score["subject"] == "English") {
+              englishTotal += 1;
+
+              if (score["timestamp"]
+                      .toDate()
+                      .difference(DateTime.now())
+                      .inDays <
+                  30) {
+                englishChartDataSource.add(score["chartData"]);
+              }
+            } else if (score["subject"] == "History") {
+              historyTotal += 1;
+
+              if (score["timestamp"]
+                      .toDate()
+                      .difference(DateTime.now())
+                      .inDays <
+                  30) {
+                historyChartDataSource.add(score["chartData"]);
+              }
+            } else if (score["subject"] == "General") {
+              generalTotal += 1;
+
+              if (score["timestamp"]
+                      .toDate()
+                      .difference(DateTime.now())
+                      .inDays <
+                  30) {
+                generalChartDataSource.add(score["chartData"]);
+              }
+            }
+          }
+
+          columnDataSource = [
+            ColumnData(mathTotal, "Math"),
+            ColumnData(englishTotal, "English"),
+            ColumnData(historyTotal, "History"),
+            ColumnData(generalTotal, "General"),
+          ];
+
+          bestHour = getBestHour(scores);
+          bestSubject = getBestSubject(scores);
+          worstSubject = getWorstSubject(scores);
+
+          analyzed = true;
+        });
+      });
+
+      EasyLoading.dismiss();
+    } catch (error) {
+      EasyLoading.showError("Something went wrong. Please try again later.");
+      EasyLoading.showError("Error: $error");
+    }
+  }
+
+  @override
+  initState() {
+    _tooltip = TooltipBehavior(enable: true);
+
+    super.initState();
+  }
 }

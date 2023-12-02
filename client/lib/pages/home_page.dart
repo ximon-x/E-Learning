@@ -1,10 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:iLearn/pages/about_page.dart';
 import 'package:iLearn/pages/analytics_page.dart';
 import 'package:iLearn/pages/dashboard.dart';
 import 'package:iLearn/pages/quiz_page.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:iLearn/pages/recommendation_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -18,10 +19,9 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   UserCredential? firebase;
 
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
+  @override
+  Widget build(BuildContext context) {
+    return home();
   }
 
   Widget home() {
@@ -45,7 +45,9 @@ class _HomePageState extends State<HomePage> {
               ? const QuizPage()
               : _selectedIndex == 2
                   ? const AnalyticsPage()
-                  : const AboutPage(),
+                  : _selectedIndex == 3
+                      ? const RecommedationPage()
+                      : const AboutPage(),
       bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
           selectedFontSize: 14,
@@ -71,6 +73,11 @@ class _HomePageState extends State<HomePage> {
               backgroundColor: Theme.of(context).primaryColor,
             ),
             BottomNavigationBarItem(
+              icon: const Icon(Icons.recommend),
+              label: "Recommendation",
+              backgroundColor: Theme.of(context).primaryColor,
+            ),
+            BottomNavigationBarItem(
               icon: const Icon(Icons.info),
               label: "About",
               backgroundColor: Theme.of(context).primaryColor,
@@ -79,8 +86,9 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return home();
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 }

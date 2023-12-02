@@ -1,42 +1,7 @@
 import 'dart:convert';
-
+import 'package:flutter/services.dart';
 import 'package:iLearn/utils/classes.dart';
 import 'package:iLearn/utils/enums.dart';
-import 'package:flutter/services.dart';
-
-Future<List<Question>> getQuestions(Subjects subject) async {
-  String key = subject.toString().split(".")[1];
-
-  final String response =
-      await rootBundle.loadString("assets/mocks/questions.json");
-
-  final rawQuestions = await json.decode(response);
-
-  dynamic questions = List<Question>.from(rawQuestions[key]
-      .map((element) => Question(
-            question: element['question'],
-            options: element['options'],
-            correctOption: element['correct_option'],
-          ))
-      .toList());
-
-  return questions;
-}
-
-String getOption(int index) {
-  switch (index) {
-    case 0:
-      return "A";
-    case 1:
-      return "B";
-    case 2:
-      return "C";
-    case 3:
-      return "D";
-    default:
-      throw Exception("Invalid option index");
-  }
-}
 
 num getBestHour(List<dynamic> scores) {
   Map<int, num> hours = {};
@@ -88,6 +53,40 @@ String getBestSubject(List<dynamic> scores) {
   }
 
   return bestSubject;
+}
+
+String getOption(int index) {
+  switch (index) {
+    case 0:
+      return "A";
+    case 1:
+      return "B";
+    case 2:
+      return "C";
+    case 3:
+      return "D";
+    default:
+      throw Exception("Invalid option index");
+  }
+}
+
+Future<List<Question>> getQuestions(Subjects subject) async {
+  String key = subject.toString().split(".")[1];
+
+  final String response =
+      await rootBundle.loadString("assets/mocks/questions.json");
+
+  final rawQuestions = await json.decode(response);
+
+  dynamic questions = List<Question>.from(rawQuestions[key]
+      .map((element) => Question(
+            question: element['question'],
+            options: element['options'],
+            correctOption: element['correct_option'],
+          ))
+      .toList());
+
+  return questions;
 }
 
 num getWorstHour(List<dynamic> scores) {
