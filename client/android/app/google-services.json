@@ -49,6 +49,50 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:441078407889:android:32978d829eaf8914e61bf0",
+        "android_client_info": {
+          "package_name": "com.ximon.iLearn"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "441078407889-m9mjtqucmggkblc2sd9ta6omkqtc4l8p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ximon.iLearn",
+            "certificate_hash": "168da6f35552b75d93a9fb67b0ac1caff6d083d1"
+          }
+        },
+        {
+          "client_id": "441078407889-r3uvegehsok186nsthu6gaqofmfpjhtl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3Az-ev67nRhCGPRkzwoJ6YxS2fFcGmKk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "441078407889-r3uvegehsok186nsthu6gaqofmfpjhtl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "441078407889-be48kf5kp12grfn63b937799vn7ul5o0.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.client"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"
