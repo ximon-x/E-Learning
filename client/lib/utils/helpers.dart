@@ -1,4 +1,5 @@
 import 'dart:convert';
+
 import 'package:flutter/services.dart';
 import 'package:iLearn/utils/classes.dart';
 import 'package:iLearn/utils/enums.dart';
@@ -87,6 +88,21 @@ Future<List<Question>> getQuestions(Subjects subject) async {
       .toList());
 
   return questions;
+}
+
+Subjects? getSubject(String subject) {
+  switch (subject) {
+    case "math":
+      return Subjects.Math;
+    case "english":
+      return Subjects.English;
+    case "history":
+      return Subjects.History;
+    case "general":
+      return Subjects.General;
+    default:
+      return null;
+  }
 }
 
 num getWorstHour(List<dynamic> scores) {

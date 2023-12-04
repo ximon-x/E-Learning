@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:iLearn/pages/analytics_page.dart';
 import 'package:iLearn/utils/enums.dart';
 import 'package:iLearn/utils/helpers.dart';
@@ -23,44 +24,135 @@ class RecommedationPage extends StatefulWidget {
 
 class _RecommendationPage extends State<RecommedationPage> {
   List scores = [];
-  String worstSubject = "";
-  String bestSubject = "";
+  Subjects? worstSubject;
+  Subjects? bestSubject;
 
   final List<Book> books = [
     Book(
-      'Introduction to Algebra',
+      'Algebra Essentials',
       Uri.parse(
-        'https://www.amazon.com/Introduction-Algebra-John-Doe/dp/123456789',
+        'https://www.amazon.com/Algebra-Essentials-Practice-Workbook-Answers/dp/1453661387/',
       ),
       Subjects.Math,
     ),
     Book(
-      'Geometry Fundamentals',
+      'Essential Prealgebra Skills',
       Uri.parse(
-        'https://www.amazon.com/Geometry-Fundamentals-Jane-Smith/dp/987654321',
+        'https://www.amazon.com/Essential-Prealgebra-Skills-Practice-Workbook/dp/1941691080/',
       ),
       Subjects.Math,
     ),
 
-    // Add more books as needed
+    Book(
+      'Order of Operations',
+      Uri.parse(
+        'https://www.amazon.com/Order-Operations-Pre-Algebra-Step-Step/dp/1635785456/',
+      ),
+      Subjects.Math,
+    ),
+
+    // English
+    Book(
+      'English for Everyone',
+      Uri.parse(
+        'https://www.amazon.com/English-Everyone-Slipcase-Beginner-DK/dp/1465475583/',
+      ),
+      Subjects.English,
+    ),
+
+    Book(
+      'English Short Stories for Beginners',
+      Uri.parse(
+        'https://www.amazon.com/English-Stories-Beginners-Intermediate-Learners/dp/1950321282/',
+      ),
+      Subjects.English,
+    ),
+
+    Book(
+      'The Art of English Grammar',
+      Uri.parse(
+        'https://www.amazon.com/Art-English-Grammar-Practice-Workbook/dp/1941691366/',
+      ),
+      Subjects.English,
+    ),
+
+    // History
+    Book(
+      'Epic Stories For Kids and Family',
+      Uri.parse(
+        'https://www.amazon.com/Epic-Stories-Kids-Family-Fascinating/dp/1957515163/',
+      ),
+      Subjects.History,
+    ),
+
+    Book(
+      'Spectacular Stories for Curious Kids',
+      Uri.parse(
+        'https://www.amazon.com/Spectacular-Stories-Curious-Kids-Fascinating/dp/1953429130/',
+      ),
+      Subjects.History,
+    ),
+
+    Book(
+      'Knowledge Encyclopedia: Space',
+      Uri.parse(
+        'https://www.amazon.com/Knowledge-Encyclopedia-Wonder-House-Books/dp/935440443X/',
+      ),
+      Subjects.History,
+    ),
+
+    // General
+    Book(
+      'Awesome Trivia For Kids',
+      Uri.parse(
+        'https://www.amazon.com/Awesome-Trivia-Kids-Challenging-Questions/dp/B08BDZ2HB5/',
+      ),
+      Subjects.General,
+    ),
+
+    Book(
+      'HISTORY Channel',
+      Uri.parse(
+        'https://www.amazon.com/HISTORY-Channel-Trivia-Game-Knowledge/dp/B0BZQTMVRM/',
+      ),
+      Subjects.General,
+    ),
+
+    Book(
+      'Super Interesting Facts',
+      Uri.parse(
+        'https://www.amazon.com/Super-Interesting-Facts-Smart-Kids/dp/B0BGGM9SGY/',
+      ),
+      Subjects.General,
+    ),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        appBar: AppBar(
+          title: const Text('Recommended Books'),
+          leading: const Icon(Icons.book),
+        ),
         body: Column(children: [
-      Expanded(
-          child: ListView.builder(
-              itemCount: books.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  title: Text(books[index].title),
-                  onTap: () {
-                    launchUrl(books[index].amazonUrl);
-                  },
-                );
-              })),
-    ]));
+          Expanded(
+              child: ListView.builder(
+                  itemCount: books.length,
+                  itemBuilder: (context, index) {
+                    return Card(
+                        margin: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+                        child: ListTile(
+                          title: Text(
+                            books[index].title,
+                            style: const TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          leading: Text("${index + 1}"),
+                          onTap: () {
+                            launchUrl(books[index].amazonUrl);
+                          },
+                        ));
+                  })),
+        ]));
   }
 
   fetchScores() async {
@@ -92,15 +184,43 @@ class _RecommendationPage extends State<RecommedationPage> {
 
   @override
   initState() {
-    fetchScores().then((value) {
-      setState(() {
-        scores = value;
+    try {
+      EasyLoading.show(
+        status: 'Getting Recommendations',
+        maskType: EasyLoadingMaskType.black,
+      );
 
-        bestSubject = getBestSubject(scores);
-        worstSubject = getWorstSubject(scores);
+      fetchScores().then((value) {
+        setState(() {
+          scores = value;
+
+          bestSubject = getSubject(getBestSubject(scores));
+          worstSubject = getSubject(getWorstSubject(scores));
+
+          // Sort books array based on worst subject first and best subject last
+
+          if (bestSubject == null || worstSubject == null) return;
+
+          books.sort((a, b) {
+            if (a.subject == worstSubject) {
+              return -1;
+            } else if (b.subject == worstSubject) {
+              return 1;
+            } else if (a.subject == bestSubject) {
+              return 1;
+            } else if (b.subject == bestSubject) {
+              return -1;
+            } else {
+              return 0;
+            }
+          });
+        });
       });
-    });
-
-    super.initState();
+    } catch (e) {
+      EasyLoading.showError("Something went wrong: $e");
+    } finally {
+      EasyLoading.dismiss();
+      super.initState();
+    }
   }
 }
