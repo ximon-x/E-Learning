@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>441078407889-be48kf5kp12grfn63b937799vn7ul5o0.apps.googleusercontent.com</string>
+	<string>441078407889-qt4bqsk67sdp4k4a2iel9l4kf3ej96su.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.441078407889-be48kf5kp12grfn63b937799vn7ul5o0</string>
+	<string>com.googleusercontent.apps.441078407889-qt4bqsk67sdp4k4a2iel9l4kf3ej96su</string>
 	<key>ANDROID_CLIENT_ID</key>
 	<string>441078407889-foea7llrr07rndn2618kah03guv0uq87.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
@@ -15,7 +15,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.example.client</string>
+	<string>com.ximon.iLearn</string>
 	<key>PROJECT_ID</key>
 	<string>i-learn-39346</string>
 	<key>STORAGE_BUCKET</key>
@@ -31,7 +31,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:441078407889:ios:05e759b757f37072e61bf0</string>
+	<string>1:441078407889:ios:9eb69c97f9ad73f5e61bf0</string>
 	<key>DATABASE_URL</key>
 	<string>https://i-learn-39346-default-rtdb.firebaseio.com</string>
 </dict>
