@@ -140,7 +140,7 @@ class _RecommendationPage extends State<RecommedationPage> {
                   itemCount: books.length,
                   itemBuilder: (context, index) {
                     return Card(
-                        margin: const EdgeInsets.fromLTRB(0, 5, 0, 5),
+                        margin: const EdgeInsets.fromLTRB(0, 8, 0, 8),
                         child: ListTile(
                           title: Text(
                             books[index].title,
