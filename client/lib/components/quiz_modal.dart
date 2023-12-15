@@ -1,9 +1,9 @@
-import 'package:iLearn/utils/classes.dart';
-import 'package:iLearn/utils/enums.dart';
-import 'package:iLearn/utils/helpers.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:iLearn/utils/classes.dart';
+import 'package:iLearn/utils/enums.dart';
+import 'package:iLearn/utils/helpers.dart';
 
 class QuizView extends StatefulWidget {
   final Subjects subject;
@@ -21,6 +21,58 @@ class _QuizViewState extends State<QuizView> {
   late List<Question> questions = [];
   late List<int> selectedOptions = [];
   int currentQuestionIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(mainAxisSize: MainAxisSize.max, children: [
+      Expanded(
+          child: ListView.builder(
+        padding: const EdgeInsets.all(20),
+        itemCount: questions.length,
+        itemBuilder: (context, index) {
+          return Card(
+              margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+              child: ListTile(
+                  leading: Text("${index + 1}"),
+                  title: Text(
+                    questions[index].question,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: questions[index].options.length,
+                      itemBuilder: (context, optionIndex) {
+                        return RadioListTile(
+                          title: Text(
+                              "${questions[index].options[getOption(optionIndex)]}"),
+                          value: optionIndex,
+                          groupValue: selectedOptions[index],
+                          onChanged: (value) {
+                            setState(() {
+                              selectedOptions[index] = value as int;
+                            });
+                          },
+                        );
+                      })));
+        },
+      )),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          const Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
+          ElevatedButton(
+            onPressed: handleSubmit,
+            child: const Text("Submit"),
+          ),
+          // ElevatedButton(
+          //   onPressed: handleReset,
+          //   child: const Text("Reset"),
+          // ),
+          const Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
+        ],
+      )
+    ]);
+  }
 
   void handleReset() {
     questions = [];
@@ -92,57 +144,5 @@ class _QuizViewState extends State<QuizView> {
           selectedOptions = List<int>.filled(questions.length, -1);
         }));
     super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(mainAxisSize: MainAxisSize.max, children: [
-      Expanded(
-          child: ListView.builder(
-        padding: const EdgeInsets.all(20),
-        itemCount: questions.length,
-        itemBuilder: (context, index) {
-          return Card(
-              margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-              child: ListTile(
-                  leading: Text("${index + 1}"),
-                  title: Text(
-                    questions[index].question,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  subtitle: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: questions[index].options.length,
-                      itemBuilder: (context, optionIndex) {
-                        return RadioListTile(
-                          title: Text(
-                              "${questions[index].options[getOption(optionIndex)]}"),
-                          value: optionIndex,
-                          groupValue: selectedOptions[index],
-                          onChanged: (value) {
-                            setState(() {
-                              selectedOptions[index] = value as int;
-                            });
-                          },
-                        );
-                      })));
-        },
-      )),
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          const Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
-          ElevatedButton(
-            onPressed: handleSubmit,
-            child: const Text("Submit"),
-          ),
-          // ElevatedButton(
-          //   onPressed: handleReset,
-          //   child: const Text("Reset"),
-          // ),
-          const Padding(padding: EdgeInsets.symmetric(horizontal: 10)),
-        ],
-      )
-    ]);
   }
 }
