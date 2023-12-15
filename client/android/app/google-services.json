@@ -59,6 +59,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "441078407889-cv9pl3g0njfc3p8v6pubj4e6ho0tmp1c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ximon.iLearn",
+            "certificate_hash": "3918ed837a0ffc1931834ff01599579453db946e"
+          }
+        },
+        {
           "client_id": "441078407889-m9mjtqucmggkblc2sd9ta6omkqtc4l8p.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -97,4 +105,3 @@
   ],
   "configuration_version": "1"
 }
-

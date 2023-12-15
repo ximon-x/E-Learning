@@ -21,7 +21,7 @@ class ChartData {
 }
 
 class ColumnData {
-  final int total;
+  final num total;
 
   final String subject;
   ColumnData(this.total, this.subject);
@@ -84,10 +84,10 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
             shadowColor: Theme.of(context).primaryColor,
             child: SfCartesianChart(
                 primaryXAxis: CategoryAxis(),
-                primaryYAxis: NumericAxis(minimum: 0, maximum: 20, interval: 4),
+                primaryYAxis: NumericAxis(minimum: 0, maximum: 50, interval: 5),
                 tooltipBehavior: _tooltip,
                 title: ChartTitle(
-                    text: "Total Tests Taken",
+                    text: "Total Score",
                     textStyle: const TextStyle(
                         fontWeight: FontWeight.bold, fontSize: 10)),
                 series: <ChartSeries>[
@@ -130,14 +130,6 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
                 ),
                 leading: const Icon(Icons.alarm_on_sharp, size: 30),
               ),
-              // ListTile(
-              //   title: Text(
-              //     "You didn't perform too well at $worstHour:00",
-              //     style: const TextStyle(
-              //         fontWeight: FontWeight.bold, fontSize: 10),
-              //   ),
-              //   leading: const Icon(Icons.gpp_bad_sharp, size: 30),
-              // ),
             ])),
       ),
 
@@ -237,14 +229,14 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
         setState(() {
           scores = value;
 
-          int mathTotal = 0;
-          int englishTotal = 0;
-          int historyTotal = 0;
-          int generalTotal = 0;
+          num mathTotal = 0;
+          num englishTotal = 0;
+          num historyTotal = 0;
+          num generalTotal = 0;
 
           for (var score in scores) {
             if (score["subject"] == "Math") {
-              mathTotal += 1;
+              mathTotal += score["score"];
 
               if (score["timestamp"]
                       .toDate()
@@ -254,7 +246,7 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
                 mathChartDataSource.add(score["chartData"]);
               }
             } else if (score["subject"] == "English") {
-              englishTotal += 1;
+              englishTotal += score["score"];
 
               if (score["timestamp"]
                       .toDate()
@@ -264,7 +256,7 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
                 englishChartDataSource.add(score["chartData"]);
               }
             } else if (score["subject"] == "History") {
-              historyTotal += 1;
+              historyTotal += score["score"];
 
               if (score["timestamp"]
                       .toDate()
@@ -274,7 +266,7 @@ class _AnalyticsPageState extends State<AnalyticsPage> {
                 historyChartDataSource.add(score["chartData"]);
               }
             } else if (score["subject"] == "General") {
-              generalTotal += 1;
+              generalTotal += score["score"];
 
               if (score["timestamp"]
                       .toDate()

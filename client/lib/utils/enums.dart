@@ -6,3 +6,9 @@ enum Subjects {
   History,
   General,
 }
+
+enum Difficulty {
+  Easy,
+  Medium,
+  Hard,
+}

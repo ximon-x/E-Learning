@@ -7,8 +7,9 @@ import 'package:flutter/material.dart';
 
 class QuizView extends StatefulWidget {
   final Subjects subject;
+  final Difficulty difficulty;
 
-  const QuizView({super.key, required this.subject});
+  const QuizView({super.key, required this.subject, required this.difficulty});
 
   @override
   State<QuizView> createState() => _QuizViewState();
@@ -68,8 +69,7 @@ class _QuizViewState extends State<QuizView> {
             actions: [
               TextButton(
                   onPressed: () {
-                    Navigator.of(context).pop();
-                    Navigator.of(context).pop();
+                    Navigator.popAndPushNamed(context, "/home");
                   },
                   child: const Text("Close"))
             ],
@@ -81,7 +81,14 @@ class _QuizViewState extends State<QuizView> {
   void initState() {
     getQuestions(widget.subject).then((res) => setState(() {
           res.shuffle();
-          questions = res.sublist(0, 10);
+
+          int questionsAmount = widget.difficulty == Difficulty.Easy
+              ? 10
+              : widget.difficulty == Difficulty.Medium
+                  ? 20
+                  : 30;
+
+          questions = res.sublist(0, questionsAmount);
           selectedOptions = List<int>.filled(questions.length, -1);
         }));
     super.initState();

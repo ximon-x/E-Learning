@@ -43,14 +43,10 @@ flutter:
     - assets/videos/
     - assets/mocks/
 
-  # fonts:
-  #   - assets/fonts/
-
-# flutter_native_splash:
-#   color: "#42a5f5"
-#   color_dark: "#042a49"
-#   image: "assets/icons/splash.png"
-#   image_dark: "assets/icons/splash.png"
+fonts:
+  - family: SocialIcons
+    fonts:
+      - asset: packages/firebase_ui_auth/fonts/SocialIcons.ttf
 
 flutter_launcher_icons:
   android: "launcher_icon"
